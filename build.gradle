@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+}
+
+group 'kr.ac.ssu'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
+
+    // https://mvnrepository.com/artifact/org.apache.jena/jena-core
+    implementation 'org.apache.jena:jena-core:4.3.2'
+
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    implementation 'com.google.guava:guava:31.0.1-jre'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
+    implementation 'org.slf4j:slf4j-log4j12:1.7.32'
+
+    // https://mvnrepository.com/artifact/org.apache.spark/spark-sql
+    implementation 'org.apache.spark:spark-sql_2.12:3.2.0'
+
+    // https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path
+    implementation 'com.jayway.jsonpath:json-path:2.7.0'
+
+    // https://mvnrepository.com/artifact/com.databricks/spark-xml
+    implementation 'com.databricks:spark-xml_2.12:0.13.0'
+
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation 'mysql:mysql-connector-java:8.0.28'
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation 'org.postgresql:postgresql:42.3.3'
+
+    // https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre11'
+
+    // https://mvnrepository.com/artifact/com.github.jsqlparser/jsqlparser
+    implementation 'com.github.jsqlparser:jsqlparser:4.3'
+}
+
+test {
+    useJUnitPlatform()
+}
