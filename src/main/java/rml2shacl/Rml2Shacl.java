@@ -15,10 +15,10 @@ public class Rml2Shacl {
 
         if (properties == null) return;
 
-        generateShExFile(properties);
+        generateShaclFile(properties);
     }
 
-    private static void generateShExFile(Properties properties) {
+    private static void generateShaclFile(Properties properties) {
         String rmlPathname = properties.getProperty("rml.pathname");
         String shaclPathname = properties.getProperty("shacl.pathname");
         String shaclBasePrefix = properties.getProperty("shacl.base.prefix");

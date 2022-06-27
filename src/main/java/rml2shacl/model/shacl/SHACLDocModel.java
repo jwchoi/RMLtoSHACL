@@ -1,17 +1,12 @@
 package rml2shacl.model.shacl;
 
 import java.net.URI;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 public class SHACLDocModel {
     private URI baseIRI;
     private String basePrefix;
-
     private Map<URI, String> prefixMap;
-
     private Set<Shape> shapes;
 
     SHACLDocModel(String basePrefix, URI baseIRI) {
@@ -21,7 +16,7 @@ public class SHACLDocModel {
         prefixMap = new TreeMap<>();
         prefixMap.put(baseIRI, basePrefix); // BASE
 
-        shapes = new HashSet<>();
+        shapes = new TreeSet<>();
     }
 
     public Map<URI, String> getPrefixMap() { return prefixMap; }
@@ -35,4 +30,6 @@ public class SHACLDocModel {
     }
 
     public Set<Shape> getShapes() { return shapes; }
+
+    void addShape(Shape shape) { shapes.add(shape); }
 }
