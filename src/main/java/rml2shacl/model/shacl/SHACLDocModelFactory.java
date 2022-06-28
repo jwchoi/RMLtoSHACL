@@ -323,7 +323,7 @@ public class SHACLDocModelFactory {
                                 .map(conversionResult -> conversionResult.nodeShape.getId())
                                 .collect(Collectors.toSet());
 
-                        NodeShape shapeAnd = new NodeShape(id, nodeShapeIDs);
+                        NodeShape shapeAnd = new NodeShape(id, nodeShapeIDs, NodeShape.Type.INFERRED_AND);
 
                         combination.stream().forEach(triplesMap -> nodeShapeIdsInferredFromTriplesMap.get(triplesMap).add(id));
                         inferredShapes.add(shapeAnd);
@@ -335,7 +335,7 @@ public class SHACLDocModelFactory {
                 ConversionResult conversionResult = tmcrMap.get(triplesMap);
                 IRI referenceId = conversionResult.referenceId4NodeShape;
                 Set<IRI> ids = nodeShapeIdsInferredFromTriplesMap.get(triplesMap).stream().collect(Collectors.toSet());
-                NodeShape shapeOr = new NodeShape(referenceId, ids);
+                NodeShape shapeOr = new NodeShape(referenceId, ids, NodeShape.Type.INFERRED_OR);
 
                 inferredShapes.add(shapeOr);
             }

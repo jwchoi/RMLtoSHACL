@@ -5,34 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeKinds.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/Rml2Shacl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/Rml2Shacl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/DeclarableShapeExpr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/DeclarableTripleExpr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/EachOf.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/NodeConstraint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/NodeKinds.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/NumericFacet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/ShExDocModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/ShExDocModelFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/Shape.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/ShapeAnd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/ShapeExpr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/ShapeExprRef.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/ShapeOr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/StringFacet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/TripleConstraint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/TripleExpr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/TripleExprRef.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/ValueSetValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shex/XSFacet.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,13 +102,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Added inverse triple constraint">
-      <created>1643091854264</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1643091854264</updated>
     </task>
     <task id="LOCAL-00027" summary="Removed serializedShapeExpr">
       <created>1643093207514</created>
@@ -470,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651133909534</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Finished SHACLDocModelFactory">
+      <created>1656323357129</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1656323357131</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -478,7 +454,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Ready to support JSON" />
     <MESSAGE value="Done with supporting JSON once" />
     <MESSAGE value="Done with supporting XML once" />
     <MESSAGE value="Done with supporting XML tested" />
@@ -503,7 +478,8 @@
     <MESSAGE value="Fixing for 9c-SQLServer" />
     <MESSAGE value="Passed all test cases." />
     <MESSAGE value="Prepared for building SHACLDocModel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepared for building SHACLDocModel" />
+    <MESSAGE value="Finished SHACLDocModelFactory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished SHACLDocModelFactory" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

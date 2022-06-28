@@ -2,6 +2,7 @@ package rml2shacl.model.shacl;
 
 import rml2shacl.commons.IRI;
 import rml2shacl.commons.Symbols;
+import rml2shacl.datasource.Column;
 import rml2shacl.model.rml.SubjectMap;
 import rml2shacl.model.rml.Template;
 import rml2shacl.model.rml.TermMap;
@@ -10,32 +11,46 @@ import java.net.URI;
 import java.util.*;
 
 public class NodeShape extends Shape {
+    enum Type {MAPPED, INFERRED_AND, INFERRED_OR}
 
+    private Type type;
+
+    //->MAPPED
     private Optional<NodeKinds> nodeKind; // sh:nodeKind
-    private Optional<String> pattern; // sh:pattern
     private Set<IRI> classes; // sh:class
+    private Optional<IRI> hasValue; //sh:hasValue
+    private Optional<String> pattern; // sh:pattern
+    private Set<IRI> propertyShapes;
+    //<-MAPPED
 
-    private enum MappingTypes { TRIPLES_MAP, NODE_SHAPES_OF_SAME_SUBJECTS, TABLE_IRI }
-
-    private MappingTypes mappingType;
-
-    private Optional<URI> mappedTriplesMap = Optional.empty(); // mapped rr:TriplesMap
-    private Optional<SubjectMap> subjectMapOfMappedTriplesMap = Optional.empty();
-
-    private Set<IRI> propertyShapes = new TreeSet<>();
-
-    private Optional<Set<URI>> nodeShapesOfSameSubject = Optional.empty();
+    //->INFERRED_OR & INFERRED_AND
+    private Set<IRI> nodeShapeIRIs;
+    //<-INFERRED_OR & INFERRED_AND
 
     private NodeShape(IRI id) {
         super(id);
+
+        nodeKind = Optional.empty();
+        classes = new TreeSet<>();
+        hasValue = Optional.empty();
+        pattern = Optional.empty();
+        propertyShapes = new TreeSet<>();
+
+        nodeShapeIRIs = new TreeSet<>();
     }
 
     NodeShape(IRI id, SubjectMap subjectMap) {
         this(id);
+
+        type = Type.MAPPED;
+        convert(subjectMap);
     }
 
-    NodeShape(IRI id, Set<IRI> nodeShapesOfSameSubject) {
+    NodeShape(IRI id, Set<IRI> nodeShapeIRIs, Type type) {
         this(id);
+
+        this.type = type;
+        this.nodeShapeIRIs.addAll(nodeShapeIRIs);
     }
 
     boolean isEquivalent(NodeShape other) {
@@ -46,36 +61,55 @@ public class NodeShape extends Shape {
         return true;
     }
 
-    NodeShape(URI id, URI mappedTriplesMap, SubjectMap subjectMapOfMappedTriplesMap, SHACLDocModel shaclDocModel) {
-        super(id, shaclDocModel);
-        this.mappedTriplesMap = Optional.of(mappedTriplesMap);
-        this.subjectMapOfMappedTriplesMap = Optional.of(subjectMapOfMappedTriplesMap);
-
-        mappingType = MappingTypes.TRIPLES_MAP;
+    private void convert(SubjectMap subjectMap) {
+        setNodeKind(subjectMap); // sh:nodeKind
+        setClasses(subjectMap); // sh:class
+        setHasValue(subjectMap); // sh:hasValue
+        setPattern(subjectMap); // sh:pattern
     }
 
-    NodeShape(URI id, Set<URI> nodeShapesOfSameSubject, SHACLDocModel shaclDocModel) {
-        super(id, shaclDocModel);
-        this.nodeShapesOfSameSubject = Optional.of(nodeShapesOfSameSubject);
+    private void setNodeKind(SubjectMap subjectMap) {
+        Optional<TermMap.TermTypes> termType = subjectMap.getTermType();
 
-        mappingType = MappingTypes.NODE_SHAPES_OF_SAME_SUBJECTS;
-    }
-
-    public Set<IRI> getPropertyShapeIDs() { return propertyShapes; }
-
-    Optional<URI> getMappedTriplesMap() { return mappedTriplesMap; }
-
-    void addPropertyShape(IRI propertyShape) { propertyShapes.add(propertyShape); }
-
-    NodeKinds getNodeKind() {
-        if (subjectMapOfMappedTriplesMap.isPresent()) {
-            Optional<TermMap.TermTypes> termType = subjectMapOfMappedTriplesMap.get().getTermType();
-            if (termType.isPresent())
-                return termType.get().equals(TermMap.TermTypes.BLANKNODE) ? NodeKinds.BlankNode : NodeKinds.IRI;
+        if (termType.isPresent()) {
+            if (termType.get().equals(TermMap.TermTypes.BLANKNODE)) {
+                setNodeKind(NodeKinds.BlankNode);
+                return;
+            }
         }
 
-        return null;
+        setNodeKind(NodeKinds.IRI);
     }
+
+    private void setNodeKind(NodeKinds nodeKind) {
+        if (nodeKind != null) this.nodeKind = Optional.of(nodeKind);
+    }
+
+    private void setClasses(SubjectMap subjectMap) { classes.addAll(subjectMap.getClasses()); }
+
+    private void setHasValue(SubjectMap subjectMap) { hasValue = subjectMap.getIRIConstant(); }
+
+    private void setPattern(SubjectMap subjectMap) {
+        // only if rr:termType is rr:IRI
+        if (nodeKind.equals(NodeKinds.IRI)) {
+            Optional<Template> template = subjectMap.getTemplate();
+            if (template.isPresent()) {
+                String format = template.get().getFormat();
+
+                // logical references
+                List<Column> logicalReferences = template.get().getLogicalReferences();
+                for (Column logicalReference: logicalReferences) {
+                    String columnName = logicalReference.getName();
+                    String quantifier = logicalReference.getMinLength().isPresent() ? "{" + logicalReference.getMinLength().get() + ",}" : "*";
+                    format = format.replace("{" + columnName + "}", "(." + quantifier + ")");
+                }
+
+                pattern = Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
+            }
+        }
+    }
+
+    void addPropertyShape(IRI propertyShape) { propertyShapes.add(propertyShape); }
 
     private String buildSerializedNodeShape(SubjectMap subjectMap) {
         StringBuffer buffer = new StringBuffer();
@@ -163,12 +197,12 @@ public class NodeShape extends Shape {
         buffer.append(getPO(Symbols.A, "sh:NodeShape"));
         buffer.append(getSNT());
 
-        switch (mappingType) {
-            case TRIPLES_MAP:
-            case NODE_SHAPES_OF_SAME_SUBJECTS:
+        switch (type) {
+            case MAPPED:
+            case INFERRED_AND:
                 buffer.append(buildSerializedNodeShapeForR2RML());
                 break;
-            case TABLE_IRI:
+            case INFERRED_OR:
                 buffer.append(buildSerializedNodeShapeForDirectMapping());
         }
 
@@ -182,20 +216,20 @@ public class NodeShape extends Shape {
 
         String o; // to be used as objects of different RDF triples
 
-        switch (mappingType) {
-            case TRIPLES_MAP:
+        switch (type) {
+            case MAPPED:
                 // if SubjectMap
                 if (subjectMapOfMappedTriplesMap.isPresent())
                     buffer.append(buildSerializedNodeShape(subjectMapOfMappedTriplesMap.get()));
 
                 break;
 
-            case NODE_SHAPES_OF_SAME_SUBJECTS:
-                if (nodeShapesOfSameSubject.isPresent())
-                    buffer.append(buildSerializedNodeShape(nodeShapesOfSameSubject.get()));
+            case INFERRED_AND:
+                if (nodeShapeIRIs.isPresent())
+                    buffer.append(buildSerializedNodeShape(nodeShapeIRIs.get()));
         }
 
-        if (mappingType.equals(MappingTypes.TRIPLES_MAP)) {
+        if (type.equals(Type.MAPPED)) {
             // sh:property
             for (URI propertyShapeIRI : propertyShapes) {
                 o = getShaclDocModel().getRelativeIRIOr(propertyShapeIRI.toString());
@@ -208,30 +242,5 @@ public class NodeShape extends Shape {
         }
 
         return buffer.toString();
-    }
-
-    Optional<String> getRegex() {
-        if (subjectMapOfMappedTriplesMap.isEmpty()) return Optional.empty();
-
-        Optional<Template> template = subjectMapOfMappedTriplesMap.get().getTemplate();
-
-        if (template.isEmpty()) return Optional.empty();
-
-        String regex = template.get().getFormat();
-
-        // column names
-        List<SQLSelectField> columnNames = template.get().getColumnNames();
-        for (SQLSelectField columnName: columnNames)
-            regex = regex.replace("{" + columnName.getColumnNameOrAlias() + "}", "(.*)");
-
-        return Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + regex + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
-    }
-
-    private Optional<String> getRegexOnlyForPrint(SubjectMap subjectMap) {
-        Optional<Template> template = subjectMap.getTemplate();
-
-        if (!isPossibleToHavePattern(template)) return Optional.empty();
-
-        return getRegex();
     }
 }

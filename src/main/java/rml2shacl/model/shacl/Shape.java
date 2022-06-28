@@ -10,14 +10,11 @@ import java.util.Optional;
 public abstract class Shape implements Comparable<Shape> {
     private Optional<IRI> id;
 
-    private String serializedShape;
-
     Shape(IRI id) { this.id = Optional.ofNullable(id); }
 
     IRI getId() { return id.orElse(null); }
 
-    protected String getSerializedShape() { return serializedShape; }
-    protected void setSerializedShape(String serializedShape) { this.serializedShape = serializedShape; }
+    public String getSerializedShape() {  return id.isPresent() ? id.get().getPrefixedName() : Symbols.EMPTY; }
 
     @Override
     public int compareTo(Shape o) {
@@ -26,15 +23,6 @@ public abstract class Shape implements Comparable<Shape> {
         if (id.isEmpty() && o.id.isEmpty()) return 0;
 
         return id.isPresent() ? 1 : -1;
-    }
-
-    protected boolean isPossibleToHavePattern(Optional<Template> template) {
-        if (template.isPresent()) {
-            if (template.get().getLengthExceptColumnName() > 0)
-                return true;
-        }
-
-        return false;
     }
 
     // \n\t
