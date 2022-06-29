@@ -73,16 +73,12 @@ public class NodeShape extends Shape {
 
         if (termType.isPresent()) {
             if (termType.get().equals(TermMap.TermTypes.BLANKNODE)) {
-                setNodeKind(NodeKinds.BlankNode);
+                nodeKind = Optional.of(NodeKinds.BlankNode);
                 return;
             }
         }
 
-        setNodeKind(NodeKinds.IRI);
-    }
-
-    private void setNodeKind(NodeKinds nodeKind) {
-        if (nodeKind != null) this.nodeKind = Optional.of(nodeKind);
+        nodeKind = Optional.of(NodeKinds.IRI);
     }
 
     private void setClasses(SubjectMap subjectMap) { classes.addAll(subjectMap.getClasses()); }
@@ -111,136 +107,93 @@ public class NodeShape extends Shape {
 
     void addPropertyShape(IRI propertyShape) { propertyShapes.add(propertyShape); }
 
-    private String buildSerializedNodeShape(SubjectMap subjectMap) {
-        StringBuffer buffer = new StringBuffer();
+    private String buildSerializedMappedNodeShape() {
+        StringBuffer sb = new StringBuffer();
 
         String o; // to be used as objects of different RDF triples
 
         // sh:nodeKind
-        NodeKinds nodeKind = getNodeKind();
-        if (nodeKind != null) {
-            o = nodeKind.equals(NodeKinds.BlankNode) ? "sh:BlankNode" : "sh:IRI";
+        if (nodeKind.isPresent()) {
+            o = nodeKind.get().equals(NodeKinds.BlankNode) ? "sh:BlankNode" : "sh:IRI";
 
-            buffer.append(getPO("sh:nodeKind", o));
-            buffer.append(getSNT());
+            sb.append(getPO("sh:nodeKind", o));
+            sb.append(getSNT());
         }
 
         // sh:class
-        Set<URI> classIRIs = new TreeSet(subjectMap.getClassIRIs());
-        for (URI classIRI: classIRIs) {
-            o = getShaclDocModel().getRelativeIRIOr(classIRI.toString());
+        for (IRI cls: classes) {
+            o = cls.getPrefixedNameOrElseAbsoluteIRI();
 
-            buffer.append(getPO("sh:class", o));
-            buffer.append(getSNT());
+            sb.append(getPO("sh:class", o));
+            sb.append(getSNT());
         }
 
         // sh:hasValue
-        Optional<String> constant = subjectMap.getConstant();
-        if (constant.isPresent()) {
-            o = constant.get();
-            if (nodeKind.equals(NodeKinds.IRI))
-                o = getShaclDocModel().getRelativeIRIOr(o);
+        if (nodeKind.equals(NodeKinds.IRI) && hasValue.isPresent()) {
+            o = hasValue.get().getPrefixedNameOrElseAbsoluteIRI();
 
-
-            buffer.append(getPO("sh:hasValue", o));
-            buffer.append(getSNT());
+            sb.append(getPO("sh:hasValue", o));
+            sb.append(getSNT());
         }
 
         // sh:pattern
         // only if rr:termType is rr:IRI
-        if (nodeKind.equals(NodeKinds.IRI)) {
-            Optional<String> regex = getRegexOnlyForPrint(subjectMap);
-            if (regex.isPresent()) {
-                o = regex.get();
-                buffer.append(getPO("sh:pattern", o));
-                buffer.append(getSNT());
-            }
+        if (nodeKind.equals(NodeKinds.IRI) && pattern.isPresent()) {
+            o = pattern.get();
+
+            sb.append(getPO("sh:pattern", o));
+            sb.append(getSNT());
         }
 
-        return buffer.toString();
+        // sh:property
+        for (IRI propertyShape : propertyShapes) {
+            o = propertyShape.getPrefixedNameOrElseAbsoluteIRI();
+            sb.append(getPO("sh:property", o));
+            sb.append(getSNT());
+        }
+
+        sb.setLength(sb.lastIndexOf(Symbols.SEMICOLON));
+        sb.append(getDNT());
+
+        return sb.toString();
     }
 
-    private String buildSerializedNodeShape(Set<URI> nodeShapesOfSameSubject) {
-        StringBuffer buffer = new StringBuffer();
+    private String buildSerializedInferredNodeShape(Type type) {
+        StringBuffer sb = new StringBuffer();
 
-        List<String> qualifiedValueShapes = new ArrayList<>();
+        String condition = type.equals(Type.INFERRED_AND) ? "sh:and" : "sh:or";
 
-        for (URI nodeShapeOfSameSubject: nodeShapesOfSameSubject) {
-            String o = getShaclDocModel().getRelativeIRIOr(nodeShapeOfSameSubject.toString());
-            qualifiedValueShapes.add(getUBN("sh:qualifiedValueShape", o));
+        sb.append(condition + Symbols.SPACE + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE);
+        for (IRI nodeShapeIRI: nodeShapeIRIs) {
+            String o = nodeShapeIRI.getPrefixedNameOrElseAbsoluteIRI();
+            sb.append(Symbols.TAB + Symbols.TAB + getUBN("sh:qualifiedValueShape", o) + Symbols.NEWLINE);
         }
+        sb.append(Symbols.TAB + Symbols.CLOSE_PARENTHESIS + Symbols.SPACE + Symbols.DOT + Symbols.NEWLINE);
 
-        if (qualifiedValueShapes.size() > 0) {
-            buffer.append("sh:and" + Symbols.SPACE + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE);
-            for (String qualifiedValueShape: qualifiedValueShapes)
-                buffer.append(Symbols.TAB + Symbols.TAB + qualifiedValueShape + Symbols.NEWLINE);
-            buffer.append(Symbols.TAB + Symbols.CLOSE_PARENTHESIS + Symbols.SPACE + Symbols.DOT + Symbols.NEWLINE);
-        }
-
-        return buffer.toString();
+        return sb.toString();
     }
 
     @Override
-    public String toString() {
-        String serializedNodeShape = getSerializedShape();
-        if (serializedNodeShape != null) return serializedNodeShape;
-
-        StringBuffer buffer = new StringBuffer();
-
-        String o; // to be used as objects of different RDF triples
-
-        String id = getShaclDocModel().getRelativeIRIOr(getId().toString());
-        buffer.append(id);
-        buffer.append(getNT());
+    public String getSerializedShape() {
+        StringBuffer sb = new StringBuffer(super.getSerializedShape());
+        sb.append(getNT());
 
         // rdf:type
-        buffer.append(getPO(Symbols.A, "sh:NodeShape"));
-        buffer.append(getSNT());
+        sb.append(getPO(Symbols.A, "sh:NodeShape"));
+        sb.append(getSNT());
 
         switch (type) {
             case MAPPED:
+                sb.append(buildSerializedMappedNodeShape());
+                break;
             case INFERRED_AND:
-                buffer.append(buildSerializedNodeShapeForR2RML());
+                sb.append(buildSerializedInferredNodeShape(Type.INFERRED_AND));
                 break;
             case INFERRED_OR:
-                buffer.append(buildSerializedNodeShapeForDirectMapping());
-        }
-
-        serializedNodeShape = buffer.toString();
-        setSerializedShape(serializedNodeShape);
-        return serializedNodeShape;
-    }
-
-    private String buildSerializedNodeShapeForR2RML() {
-        StringBuffer buffer = new StringBuffer();
-
-        String o; // to be used as objects of different RDF triples
-
-        switch (type) {
-            case MAPPED:
-                // if SubjectMap
-                if (subjectMapOfMappedTriplesMap.isPresent())
-                    buffer.append(buildSerializedNodeShape(subjectMapOfMappedTriplesMap.get()));
-
+                sb.append(buildSerializedInferredNodeShape(Type.INFERRED_OR));
                 break;
-
-            case INFERRED_AND:
-                if (nodeShapeIRIs.isPresent())
-                    buffer.append(buildSerializedNodeShape(nodeShapeIRIs.get()));
         }
 
-        if (type.equals(Type.MAPPED)) {
-            // sh:property
-            for (URI propertyShapeIRI : propertyShapes) {
-                o = getShaclDocModel().getRelativeIRIOr(propertyShapeIRI.toString());
-                buffer.append(getPO("sh:property", o));
-                buffer.append(getSNT());
-            }
-
-            buffer.setLength(buffer.lastIndexOf(Symbols.SEMICOLON));
-            buffer.append(getDNT());
-        }
-
-        return buffer.toString();
+        return sb.toString();
     }
 }
