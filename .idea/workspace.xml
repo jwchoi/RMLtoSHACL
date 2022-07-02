@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,13 +100,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Removed serializedTripleExpr">
-      <created>1643093393144</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1643093393144</updated>
     </task>
     <task id="LOCAL-00029" summary="Removed serializedValueSetValue">
       <created>1643093835313</created>
@@ -444,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656407844823</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Finished building NodeShape">
+      <created>1656476536168</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1656476536170</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -452,7 +452,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Done with supporting XML once" />
     <MESSAGE value="Done with supporting XML tested" />
     <MESSAGE value="Added JsonPath Option" />
     <MESSAGE value="Tested to support CSV, XML and JSON" />
@@ -477,7 +476,8 @@
     <MESSAGE value="Prepared for building SHACLDocModel" />
     <MESSAGE value="Finished SHACLDocModelFactory" />
     <MESSAGE value="Ready to Serialize NodeShape" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready to Serialize NodeShape" />
+    <MESSAGE value="Finished building NodeShape" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished building NodeShape" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
