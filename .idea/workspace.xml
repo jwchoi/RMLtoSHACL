@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/Rml2Shacl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/Rml2Shacl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/processor/Rml2ShaclConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/processor/Rml2ShaclConverter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +95,26 @@
       <recent name="" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Rml2Shacl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="rml2shacl.Rml2Shacl" />
+      <module name="RML2SHACL.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rml2shacl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Rml2Shacl" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -101,13 +123,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Added &quot;CLOSED&quot;">
-      <created>1643161611105</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1643161611105</updated>
     </task>
     <task id="LOCAL-00031" summary="Before removing id">
       <created>1643171195365</created>
@@ -445,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656754336223</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Ready to test">
+      <created>1656918081295</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1656918081305</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -453,7 +475,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Added JsonPath Option" />
     <MESSAGE value="Tested to support CSV, XML and JSON" />
     <MESSAGE value="Tested to support CSV, XML, JSON and MySQL" />
     <MESSAGE value="Removed unused classes." />
@@ -478,7 +499,8 @@
     <MESSAGE value="Ready to Serialize NodeShape" />
     <MESSAGE value="Finished building NodeShape" />
     <MESSAGE value="Ready to use 'inverse'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready to use 'inverse'" />
+    <MESSAGE value="Ready to test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready to test" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

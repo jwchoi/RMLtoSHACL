@@ -47,6 +47,7 @@ public class PropertyShape extends Shape {
         super(id);
 
         nodeKind = Optional.empty();
+        languageTag = Optional.empty();
         pattern = Optional.empty();
         minInclusive = Optional.empty();
         maxInclusive = Optional.empty();
@@ -146,7 +147,8 @@ public class PropertyShape extends Shape {
     }
 
     private void setLanguageTag(ObjectMap objectMap) {
-        languageTag = objectMap.getLanguageMap().get().getLiteralConstant();
+        if (objectMap.getLanguageMap().isPresent())
+            languageTag = objectMap.getLanguageMap().get().getLiteralConstant();
     }
 
     private void setDatatype(ObjectMap objectMap) {
