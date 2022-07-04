@@ -33,7 +33,7 @@ public class PropertyShape extends Shape {
     //<- ObjectMap
 
     //-> RefObjectMap
-    private IRI node; // sh:node
+    private Optional<IRI> node; // sh:node
     //<- RefObjectMap
 
     private Optional<Long> minCount; // if empty, 0
@@ -229,7 +229,7 @@ public class PropertyShape extends Shape {
         }
     }
 
-    private void setNode(IRI node) { this.node = node; }
+    private void setNode(IRI node) { this.node = Optional.ofNullable(node); }
 
     private void setMinCount(ObjectMap objectMap, Optional<Long> minOccurs) {
         // the default cardinality
@@ -270,11 +270,6 @@ public class PropertyShape extends Shape {
 
         String o; // to be used as objects of different RDF triples
 
-        // sh:path
-        o = path.getPrefixedNameOrElseAbsoluteIRI();
-        sb.append(getPO("sh:path", o));
-        sb.append(getSNT());
-
         // sh:nodeKind
         if (nodeKind.isPresent()) {
             o = switch (nodeKind.get()) {
@@ -303,7 +298,7 @@ public class PropertyShape extends Shape {
             if (isRepeatedProperty)
                 sb.append(getPO("sh:qualifiedValueShape", getUBN("sh:hasValue", o)));
             else
-                sb.append(getPO("sh:in", o));
+                sb.append(getPO("sh:hasValue", o));
 
             sb.append(getSNT());
         }
@@ -367,6 +362,53 @@ public class PropertyShape extends Shape {
             sb.append(getSNT());
         }
 
+        return sb.toString();
+    }
+
+    private String buildSerializedPropertyShapeFromPredicateRefObjectMap() {
+
+        StringBuffer sb = new StringBuffer();
+
+        String o; // to be used as objects of different RDF triples
+
+        // sh:node
+        if (node.isPresent()) {
+            o = node.get().getPrefixedNameOrElseAbsoluteIRI();
+
+            if (isRepeatedProperty)
+                sb.append(getPO("sh:qualifiedValueShape", getUBN("sh:node", o)));
+            else
+                sb.append(getPO("sh:node", o));
+
+            sb.append(getSNT());
+        }
+
+        return sb.toString();
+    }
+
+    @Override
+    public String getSerializedShape() {
+        StringBuffer sb = new StringBuffer(super.getSerializedShape());
+        sb.append(getNT());
+
+        String o; // to be used as objects of different RDF triples
+
+        // rdf:type sh:PropertyShape
+        o = "sh:PropertyShape";
+        sb.append(getPO(Symbols.A, o));
+        sb.append(getSNT());
+
+        // sh:path
+        o = path.getPrefixedNameOrElseAbsoluteIRI();
+        if (inverse) o = getUBN("sh:inversePath", o);
+        sb.append(getPO("sh:path", o));
+        sb.append(getSNT());
+
+        switch (type) {
+            case OBJECT_MAP -> sb.append(buildSerializedPropertyShapeFromPredicateObjectMap());
+            case REF_OBJECT_MAP -> sb.append(buildSerializedPropertyShapeFromPredicateRefObjectMap());
+        }
+
         // sh:minCount
         if (minCount.isPresent()) {
             o = minCount.get().toString();
@@ -395,36 +437,6 @@ public class PropertyShape extends Shape {
         if (isRepeatedProperty) {
             sb.append(getPO("sh:qualifiedValueShapesDisjoint", "true"));
             sb.append(getSNT());
-        }
-
-        return sb.toString();
-    }
-
-    private String buildSerializedPropertyShapeFromPredicateRefObjectMap() {
-        StringBuffer buffer = new StringBuffer();
-
-        String o; // to be used as objects of different RDF triples
-
-        // sh:node
-        o = node.getPrefixedNameOrElseAbsoluteIRI();
-        buffer.append(getPO("sh:node", o));
-        buffer.append(getSNT());
-
-        return buffer.toString();
-    }
-
-    @Override
-    public String getSerializedShape() {
-        StringBuffer sb = new StringBuffer(super.getSerializedShape());
-        sb.append(getNT());
-
-        // rdf:type sh:PropertyShape
-        sb.append(getPO(Symbols.A, "sh:PropertyShape"));
-        sb.append(getSNT());
-
-        switch (type) {
-            case OBJECT_MAP -> sb.append(buildSerializedPropertyShapeFromPredicateObjectMap());
-            case REF_OBJECT_MAP -> sb.append(buildSerializedPropertyShapeFromPredicateRefObjectMap());
         }
 
         sb.setLength(sb.lastIndexOf(Symbols.SEMICOLON));

@@ -183,15 +183,9 @@ public class NodeShape extends Shape {
         sb.append(getSNT());
 
         switch (type) {
-            case MAPPED:
-                sb.append(buildSerializedMappedNodeShape());
-                break;
-            case INFERRED_AND:
-                sb.append(buildSerializedInferredNodeShape(Type.INFERRED_AND));
-                break;
-            case INFERRED_OR:
-                sb.append(buildSerializedInferredNodeShape(Type.INFERRED_OR));
-                break;
+            case MAPPED -> sb.append(buildSerializedMappedNodeShape());
+            case INFERRED_AND -> sb.append(buildSerializedInferredNodeShape(Type.INFERRED_AND));
+            case INFERRED_OR -> sb.append(buildSerializedInferredNodeShape(Type.INFERRED_OR));
         }
 
         return sb.toString();
