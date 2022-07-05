@@ -57,7 +57,7 @@ public class Rml2Shacl {
         try {
             File file = converter.generateShaclFile();
             System.out.println("SUCCESS: The SHACL file \"" + file.getCanonicalPath() + "\" is generated.");
-        } catch (Exception e) {e.printStackTrace();
+        } catch (Exception e) {
             System.err.println("ERROR: " + e.getMessage());
             System.err.println("ERROR: To Generate the SHACL file.");
         }

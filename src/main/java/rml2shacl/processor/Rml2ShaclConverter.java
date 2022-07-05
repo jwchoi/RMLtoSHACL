@@ -69,9 +69,7 @@ public class Rml2ShaclConverter {
     }
 
     private void writeShacl() {
-        Set<Shape> shapes = shaclDocModel.getShapes();
-
-        shapes.stream().map(Shape::getSerializedShape).sorted().forEach(writer::println);
+        shaclDocModel.getShapes().stream().map(Shape::getSerializedShape).sorted().forEach(writer::println);
     }
 
     private void preProcess() {

@@ -56,9 +56,18 @@ public class NodeShape extends Shape {
     boolean isEquivalent(NodeShape other) {
         if (!nodeKind.equals(other.nodeKind)) return false;
 
-        if (!pattern.equals(other.pattern)) return false;
+        if (!isEquivalentPattern(other.pattern)) return false;
 
         return true;
+    }
+
+    private boolean isEquivalentPattern(Optional<String> pattern) {
+        if (this.pattern.isEmpty() || pattern.isEmpty()) return false;
+
+        String normalizedThisPattern = this.pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
+        String normalizedOtherPattern = pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
+
+        return normalizedThisPattern.equals(normalizedOtherPattern);
     }
 
     private void convert(SubjectMap subjectMap) {
@@ -87,7 +96,7 @@ public class NodeShape extends Shape {
 
     private void setPattern(SubjectMap subjectMap) {
         // only if rr:termType is rr:IRI
-        if (nodeKind.equals(NodeKinds.IRI)) {
+        if (nodeKind.get().equals(NodeKinds.IRI)) {
             Optional<Template> template = subjectMap.getTemplate();
             if (template.isPresent()) {
                 String format = template.get().getFormat();
@@ -129,7 +138,7 @@ public class NodeShape extends Shape {
         }
 
         // sh:hasValue
-        if (nodeKind.equals(NodeKinds.IRI) && hasValue.isPresent()) {
+        if (nodeKind.get().equals(NodeKinds.IRI) && hasValue.isPresent()) {
             o = hasValue.get().getPrefixedNameOrElseAbsoluteIRI();
 
             sb.append(getPO("sh:hasValue", o));
@@ -138,7 +147,7 @@ public class NodeShape extends Shape {
 
         // sh:pattern
         // only if rr:termType is rr:IRI
-        if (nodeKind.equals(NodeKinds.IRI) && pattern.isPresent()) {
+        if (nodeKind.get().equals(NodeKinds.IRI) && pattern.isPresent()) {
             o = pattern.get();
 
             sb.append(getPO("sh:pattern", o));
@@ -158,6 +167,21 @@ public class NodeShape extends Shape {
         return sb.toString();
     }
 
+//    private String buildSerializedInferredNodeShape(Type type) {
+//        StringBuffer sb = new StringBuffer();
+//
+//        String condition = type.equals(Type.INFERRED_AND) ? "sh:and" : "sh:or";
+//
+//        sb.append(condition + Symbols.SPACE + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE);
+//        for (IRI nodeShapeIRI: nodeShapeIRIs) {
+//            String o = nodeShapeIRI.getPrefixedNameOrElseAbsoluteIRI();
+//            sb.append(Symbols.TAB + Symbols.TAB + getUBN("sh:qualifiedValueShape", o) + Symbols.NEWLINE);
+//        }
+//        sb.append(Symbols.TAB + Symbols.CLOSE_PARENTHESIS + Symbols.SPACE + Symbols.DOT + Symbols.NEWLINE);
+//
+//        return sb.toString();
+//    }
+
     private String buildSerializedInferredNodeShape(Type type) {
         StringBuffer sb = new StringBuffer();
 
@@ -166,7 +190,7 @@ public class NodeShape extends Shape {
         sb.append(condition + Symbols.SPACE + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE);
         for (IRI nodeShapeIRI: nodeShapeIRIs) {
             String o = nodeShapeIRI.getPrefixedNameOrElseAbsoluteIRI();
-            sb.append(Symbols.TAB + Symbols.TAB + getUBN("sh:qualifiedValueShape", o) + Symbols.NEWLINE);
+            sb.append(Symbols.TAB + Symbols.TAB + o + Symbols.NEWLINE);
         }
         sb.append(Symbols.TAB + Symbols.CLOSE_PARENTHESIS + Symbols.SPACE + Symbols.DOT + Symbols.NEWLINE);
 
