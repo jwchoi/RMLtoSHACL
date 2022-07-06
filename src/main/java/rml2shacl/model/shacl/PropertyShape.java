@@ -292,7 +292,7 @@ public class PropertyShape extends Shape {
             o = "";
 
             if (literalValue.isPresent())
-                o = Symbols.DOUBLE_QUOTATION_MARK + literalValue.get() + Symbols.DOUBLE_QUOTATION_MARK;
+                o = literalValue.get();
 
             if (iriValue.isPresent())
                 o = iriValue.get().getPrefixedNameOrElseAbsoluteIRI();

@@ -4,51 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="Fixed ShapeAnd &amp; ShapeOr for 4a-CSV">
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0004a-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-CSV/test.ttl" afterDir="false" />
+    <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-CSV/test.ttl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/Rml2Shacl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/Rml2Shacl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/Shape.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/processor/Rml2ShaclConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/processor/Rml2ShaclConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/Rml2Shacl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/Rml2Shacl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/processor/Rml2ShaclConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/processor/Rml2ShaclConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/Transport.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/Venue.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/country_en.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/country_en.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/country_es.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/country_es.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/country_info.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/country_info.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/ious.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/ious.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/lives.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/lives.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/persons.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/persons.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/sport.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/sport.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/student.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/student.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/student_sport.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/student_sport.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0000-CSV/test.shex" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-CSV/test.shex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002a-CSV/test.shex" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-CSV/test.shex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002b-CSV/test.shex" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-CSV/test.shex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002e-CSV/test.shex" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-CSV/test.shex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +82,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/jwchoi/Desktop/RML2SHACL/test-cases/RMLTC0002e-CSV",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
@@ -165,13 +129,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Done reusing triple expression (not tested)">
-      <created>1643197264464</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1643197264464</updated>
     </task>
     <task id="LOCAL-00033" summary="Done with processing for rr:constant in NodeConstraint">
       <created>1643604576274</created>
@@ -509,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656926211231</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Ready to Fix for 6a-CSV">
+      <created>1657012806983</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1657012806984</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -517,7 +481,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Removed unused classes." />
     <MESSAGE value="Modified CONNECTIONDSN in MySQL." />
     <MESSAGE value="Preparing for the tests on MSSQL, PostgreSQL." />
     <MESSAGE value="Done with natural mapping and equivalent node constraint" />
@@ -542,7 +505,8 @@
     <MESSAGE value="Ready to test" />
     <MESSAGE value="Modified writeShacl()" />
     <MESSAGE value="Fixed ShapeAnd &amp; ShapeOr for 4a-CSV" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed ShapeAnd &amp; ShapeOr for 4a-CSV" />
+    <MESSAGE value="Ready to Fix for 6a-CSV" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready to Fix for 6a-CSV" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

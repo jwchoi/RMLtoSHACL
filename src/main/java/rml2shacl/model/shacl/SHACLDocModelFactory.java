@@ -73,7 +73,7 @@ public class SHACLDocModelFactory {
         }
 
         Set<NodeShape> nodeShapes = ntMap.keySet();
-
+        
         Set<Set<NodeShape>> nsGroup = new HashSet<>();
         // build group
         for (NodeShape ns1 : nodeShapes) {
@@ -290,7 +290,7 @@ public class SHACLDocModelFactory {
         for (Set<TriplesMap> triplesMapSubgroup: triplesMapGroup) {
 
             int n = triplesMapSubgroup.size();
-
+            
             if (n == 1) {
                 TriplesMap triplesMap = triplesMapSubgroup.stream().findAny().get();
                 ConversionResult conversionResult = tmcrMap.get(triplesMap);

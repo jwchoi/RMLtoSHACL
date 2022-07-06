@@ -56,14 +56,17 @@ public class NodeShape extends Shape {
     boolean isEquivalent(NodeShape other) {
         if (!nodeKind.equals(other.nodeKind)) return false;
 
-        if (!isEquivalentPattern(other.pattern)) return false;
+        if (pattern.stream().count() != other.pattern.stream().count()) return false;
+        if (pattern.isPresent() && other.pattern.isPresent()) {
+            if (!isEquivalentPattern(other.pattern)) return false;
+        }
+
+        if (!hasValue.equals(other.hasValue)) return false;
 
         return true;
     }
 
     private boolean isEquivalentPattern(Optional<String> pattern) {
-        if (this.pattern.isEmpty() || pattern.isEmpty()) return false;
-
         String normalizedThisPattern = this.pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
         String normalizedOtherPattern = pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
 
@@ -166,21 +169,6 @@ public class NodeShape extends Shape {
 
         return sb.toString();
     }
-
-//    private String buildSerializedInferredNodeShape(Type type) {
-//        StringBuffer sb = new StringBuffer();
-//
-//        String condition = type.equals(Type.INFERRED_AND) ? "sh:and" : "sh:or";
-//
-//        sb.append(condition + Symbols.SPACE + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE);
-//        for (IRI nodeShapeIRI: nodeShapeIRIs) {
-//            String o = nodeShapeIRI.getPrefixedNameOrElseAbsoluteIRI();
-//            sb.append(Symbols.TAB + Symbols.TAB + getUBN("sh:qualifiedValueShape", o) + Symbols.NEWLINE);
-//        }
-//        sb.append(Symbols.TAB + Symbols.CLOSE_PARENTHESIS + Symbols.SPACE + Symbols.DOT + Symbols.NEWLINE);
-//
-//        return sb.toString();
-//    }
 
     private String buildSerializedInferredNodeShape(Type type) {
         StringBuffer sb = new StringBuffer();
