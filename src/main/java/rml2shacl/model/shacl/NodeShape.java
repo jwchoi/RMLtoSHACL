@@ -7,7 +7,6 @@ import rml2shacl.model.rml.SubjectMap;
 import rml2shacl.model.rml.Template;
 import rml2shacl.model.rml.TermMap;
 
-import java.net.URI;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,17 +15,17 @@ public class NodeShape extends Shape {
 
     private Type type;
 
-    //->MAPPED
+    //->MAPPED & INFERRED_AND
     private Optional<NodeKinds> nodeKind; // sh:nodeKind
     private Set<IRI> classes; // sh:class
     private Optional<IRI> hasValue; //sh:hasValue
     private Optional<String> pattern; // sh:pattern
     private Set<IRI> propertyShapes;
-    //<-MAPPED
+    //<-MAPPED & INFERRED_AND
 
-    //->INFERRED_OR & INFERRED_AND
+    //->INFERRED_OR
     private Set<IRI> nodeShapeIRIs;
-    //<-INFERRED_OR & INFERRED_AND
+    //<-INFERRED_OR
 
     private NodeShape(IRI id) {
         super(id);
@@ -47,10 +46,17 @@ public class NodeShape extends Shape {
         convert(subjectMap);
     }
 
-    NodeShape(IRI id, Set<IRI> nodeShapeIRIs, Type type) {
+    NodeShape(IRI id, SubjectMap... subjectMaps) {
         this(id);
 
-        this.type = type;
+        type = Type.INFERRED_AND;
+        convert(subjectMaps);
+    }
+
+    NodeShape(IRI id, Set<IRI> nodeShapeIRIs) {
+        this(id);
+
+        type = Type.INFERRED_OR;
         this.nodeShapeIRIs.addAll(nodeShapeIRIs);
     }
 
@@ -79,6 +85,15 @@ public class NodeShape extends Shape {
         setClasses(subjectMap); // sh:class
         setHasValue(subjectMap); // sh:hasValue
         setPattern(subjectMap); // sh:pattern
+    }
+
+    private void convert(SubjectMap... subjectMaps) {
+        setNodeKind(Arrays.stream(subjectMaps).findAny().get()); // all nodeKinds are the same.
+        Arrays.stream(subjectMaps).forEach(this::setClasses); // classes are all added.
+        setPattern(subjectMaps);
+        setHasValue();
+
+
     }
 
     private void setNodeKind(SubjectMap subjectMap) {

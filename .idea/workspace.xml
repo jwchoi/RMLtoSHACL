@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,13 +128,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Created Metadata a TripleMap">
-      <created>1643863636376</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1643863636377</updated>
     </task>
     <task id="LOCAL-00036" summary="Added GroupBy">
       <created>1643975851692</created>
@@ -471,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657162640936</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="modified getSerializedShape()">
+      <created>1657165671104</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1657165671104</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -479,7 +480,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Done with natural mapping and equivalent node constraint" />
     <MESSAGE value="Fill in the missing d2rq:jdbcDSN for PostgreSQL" />
     <MESSAGE value="Fill in the missing d2rq:jdbcDSN for SQLServer" />
     <MESSAGE value="Fixed minOccurs" />
@@ -504,7 +504,8 @@
     <MESSAGE value="Ready to Fix for 6a-CSV" />
     <MESSAGE value="Fixed for 6a-CSV" />
     <MESSAGE value="Ready to fix for ShapeAnd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ready to fix for ShapeAnd" />
+    <MESSAGE value="modified getSerializedShape()" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified getSerializedShape()" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
