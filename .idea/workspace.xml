@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0007a-CSV/test.shex" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0007a-CSV/test.shex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0007b-CSV/test.shex" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0007b-CSV/test.shex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,19 +73,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/jwchoi/Desktop/RML2SHACL/test-cases/RMLTC0007b-CSV",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jwchoi/Desktop/RML2SHACL/test-cases/RMLTC0007b-CSV&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jwchoi\Desktop\RML2SHACL\test-cases\RMLTC0007b-CSV" />
@@ -130,13 +127,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Connected with Spark">
-      <created>1643797670448</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1643797670448</updated>
     </task>
     <task id="LOCAL-00035" summary="Created Metadata a TripleMap">
       <created>1643863636376</created>
@@ -474,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657085054479</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Ready to fix for ShapeAnd">
+      <created>1657162640934</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1657162640936</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -482,7 +479,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Preparing for the tests on MSSQL, PostgreSQL." />
     <MESSAGE value="Done with natural mapping and equivalent node constraint" />
     <MESSAGE value="Fill in the missing d2rq:jdbcDSN for PostgreSQL" />
     <MESSAGE value="Fill in the missing d2rq:jdbcDSN for SQLServer" />
@@ -507,7 +503,8 @@
     <MESSAGE value="Fixed ShapeAnd &amp; ShapeOr for 4a-CSV" />
     <MESSAGE value="Ready to Fix for 6a-CSV" />
     <MESSAGE value="Fixed for 6a-CSV" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed for 6a-CSV" />
+    <MESSAGE value="Ready to fix for ShapeAnd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready to fix for ShapeAnd" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

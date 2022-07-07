@@ -9,6 +9,7 @@ import rml2shacl.model.rml.TermMap;
 
 import java.net.URI;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class NodeShape extends Shape {
     enum Type {MAPPED, INFERRED_AND, INFERRED_OR}
@@ -119,8 +120,8 @@ public class NodeShape extends Shape {
 
     void addPropertyShape(IRI propertyShape) { propertyShapes.add(propertyShape); }
 
-    private String buildSerializedMappedNodeShape() {
-        StringBuffer sb = new StringBuffer();
+    private List<String> buildSerializedMappedNodeShape() {
+        List<String> pos = new ArrayList<>();
 
         String o; // to be used as objects of different RDF triples
 
@@ -128,24 +129,21 @@ public class NodeShape extends Shape {
         if (nodeKind.isPresent()) {
             o = nodeKind.get().equals(NodeKinds.BlankNode) ? "sh:BlankNode" : "sh:IRI";
 
-            sb.append(getPO("sh:nodeKind", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:nodeKind", o));
         }
 
         // sh:class
         for (IRI cls: classes) {
             o = cls.getPrefixedNameOrElseAbsoluteIRI();
 
-            sb.append(getPO("sh:class", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:class", o));
         }
 
         // sh:hasValue
         if (nodeKind.get().equals(NodeKinds.IRI) && hasValue.isPresent()) {
             o = hasValue.get().getPrefixedNameOrElseAbsoluteIRI();
 
-            sb.append(getPO("sh:hasValue", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:hasValue", o));
         }
 
         // sh:pattern
@@ -153,52 +151,51 @@ public class NodeShape extends Shape {
         if (nodeKind.get().equals(NodeKinds.IRI) && pattern.isPresent()) {
             o = pattern.get();
 
-            sb.append(getPO("sh:pattern", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:pattern", o));
         }
 
         // sh:property
         for (IRI propertyShape : propertyShapes) {
             o = propertyShape.getPrefixedNameOrElseAbsoluteIRI();
-            sb.append(getPO("sh:property", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:property", o));
         }
 
-        sb.setLength(sb.lastIndexOf(Symbols.SEMICOLON));
-        sb.append(getDNT());
-
-        return sb.toString();
+        return pos;
     }
 
     private String buildSerializedInferredNodeShape(Type type) {
-        StringBuffer sb = new StringBuffer();
+        String constraint = type.equals(Type.INFERRED_AND) ? "sh:and" : "sh:or";
 
-        String condition = type.equals(Type.INFERRED_AND) ? "sh:and" : "sh:or";
+        String delimiter = Symbols.NEWLINE;
+        String shaclList = nodeShapeIRIs.stream()
+                .map(IRI::getPrefixedNameOrElseAbsoluteIRI)
+                .sorted()
+                .collect(Collectors.joining(delimiter)).indent(4);
 
-        sb.append(condition + Symbols.SPACE + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE);
-        for (IRI nodeShapeIRI: nodeShapeIRIs) {
-            String o = nodeShapeIRI.getPrefixedNameOrElseAbsoluteIRI();
-            sb.append(Symbols.TAB + Symbols.TAB + o + Symbols.NEWLINE);
-        }
-        sb.append(Symbols.TAB + Symbols.CLOSE_PARENTHESIS + Symbols.SPACE + Symbols.DOT + Symbols.NEWLINE);
-
-        return sb.toString();
+        return constraint + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE + shaclList + Symbols.NEWLINE + Symbols.CLOSE_PARENTHESIS;
     }
 
     @Override
     public String getSerializedShape() {
         StringBuffer sb = new StringBuffer(super.getSerializedShape());
-        sb.append(getNT());
+
+        List<String> pos = new ArrayList<>();
 
         // rdf:type
-        sb.append(getPO(Symbols.A, "sh:NodeShape"));
-        sb.append(getSNT());
+        pos.add(getPO(Symbols.A, "sh:NodeShape"));
 
         switch (type) {
-            case MAPPED -> sb.append(buildSerializedMappedNodeShape());
-            case INFERRED_AND -> sb.append(buildSerializedInferredNodeShape(Type.INFERRED_AND));
-            case INFERRED_OR -> sb.append(buildSerializedInferredNodeShape(Type.INFERRED_OR));
+            case MAPPED -> pos.addAll(buildSerializedMappedNodeShape());
+            case INFERRED_AND -> pos.add(buildSerializedInferredNodeShape(Type.INFERRED_AND));
+            case INFERRED_OR -> pos.add(buildSerializedInferredNodeShape(Type.INFERRED_OR));
         }
+
+        String delimiter = Symbols.SPACE + Symbols.SEMICOLON + Symbols.NEWLINE;
+        String prefix = Symbols.NEWLINE;
+        String suffix = Symbols.SPACE + Symbols.DOT;
+        String constraints = pos.stream().collect(Collectors.joining(delimiter, prefix, suffix)).indent(4);
+
+        sb.append(constraints);
 
         return sb.toString();
     }

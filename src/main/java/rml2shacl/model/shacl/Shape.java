@@ -25,13 +25,6 @@ public abstract class Shape implements Comparable<Shape> {
         return id.isPresent() ? 1 : -1;
     }
 
-    // \n\t
-    protected String getNT() { return Symbols.NEWLINE + Symbols.TAB; }
-    // ;\n\t
-    protected String getSNT() { return Symbols.SPACE + Symbols.SEMICOLON + Symbols.NEWLINE + Symbols.TAB; }
-    // .\n\t
-    protected String getDNT() { return Symbols.SPACE + Symbols.DOT + Symbols.NEWLINE + Symbols.TAB; }
-
     protected String getPO(String p, String o) { return p + Symbols.SPACE + o; }
 
     // Unlabeled Blank Node
