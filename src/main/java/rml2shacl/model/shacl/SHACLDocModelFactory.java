@@ -141,7 +141,7 @@ public class SHACLDocModelFactory {
             for (PredicateObjectMap.PredicateObjectPair predicateObjectPair : predicateObjectPairs) {
                 PredicateMap predicateMap = predicateObjectPair.getPredicateMap();
 
-                boolean isRepeatedPredicate = isRepeatedPredicate(triplesMap, predicateMap);
+                boolean isRepeatedPredicate = isRepeatedPredicate(Set.of(triplesMap), predicateMap);
                 IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, isRepeatedPredicate, conversionResult, false);
 
                 // when object map
@@ -154,24 +154,27 @@ public class SHACLDocModelFactory {
                     PropertyShape po2ps = new PropertyShape(propertyShapeID, predicateMap, isRepeatedPredicate, objectMap, minOccurs, maxOccurs);
 
                     conversionResult.propertyShapes.add(po2ps);
+                    conversionResult.propertyShapePredicateObjectPairMap.put(po2ps, predicateObjectPair);
                 }
             }
         }
     }
 
-    private static boolean isRepeatedPredicate(TriplesMap triplesMap, PredicateMap predicateMap) {
+    private static boolean isRepeatedPredicate(Set<TriplesMap> triplesMaps, PredicateMap predicateMap) {
         int multiplicity = 0;
 
-        List<PredicateObjectMap> predicateObjectMaps = triplesMap.getPredicateObjectMaps();
-        for (PredicateObjectMap predicateObjectMap: predicateObjectMaps) {
+        for (TriplesMap triplesMap: triplesMaps) {
+            List<PredicateObjectMap> predicateObjectMaps = triplesMap.getPredicateObjectMaps();
+            for (PredicateObjectMap predicateObjectMap : predicateObjectMaps) {
 
-            List<PredicateObjectMap.PredicateObjectPair> predicateObjectPairs = predicateObjectMap.getPredicateObjectPairs();
-            for (PredicateObjectMap.PredicateObjectPair predicateObjectPair: predicateObjectPairs) {
+                List<PredicateObjectMap.PredicateObjectPair> predicateObjectPairs = predicateObjectMap.getPredicateObjectPairs();
+                for (PredicateObjectMap.PredicateObjectPair predicateObjectPair : predicateObjectPairs) {
 
-                PredicateMap other = predicateObjectPair.getPredicateMap();
-                if (predicateMap.getIRIConstant().equals(other.getIRIConstant())) {
-                    multiplicity++;
-                    if (multiplicity > 1) return true;
+                    PredicateMap other = predicateObjectPair.getPredicateMap();
+                    if (predicateMap.getIRIConstant().equals(other.getIRIConstant())) {
+                        multiplicity++;
+                        if (multiplicity > 1) return true;
+                    }
                 }
             }
         }
@@ -225,7 +228,7 @@ public class SHACLDocModelFactory {
                 for (PredicateObjectMap.PredicateObjectPair predicateObjectPair : predicateObjectPairs) {
                     PredicateMap predicateMap = predicateObjectPair.getPredicateMap();
 
-                    boolean isRepeatedPredicate = isRepeatedPredicate(triplesMap, predicateMap);
+                    boolean isRepeatedPredicate = isRepeatedPredicate(Set.of(triplesMap), predicateMap);
 
                     // when referencing object map
                     if (predicateObjectPair.getRefObjectMap().isPresent()) {
@@ -241,6 +244,7 @@ public class SHACLDocModelFactory {
                         PropertyShape pr2ps = new PropertyShape(propertyShapeID, predicateMap, isRepeatedPredicate, referenceIdFromParentTriplesMap, minOccurs, maxOccurs, false);
 
                         conversionResult.propertyShapes.add(pr2ps);
+                        conversionResult.propertyShapePredicateObjectPairMap.put(pr2ps, predicateObjectPair);
 
                         // for inverse
                         URI uriOfChildTriplesMap = triplesMap.getUri();
@@ -318,10 +322,14 @@ public class SHACLDocModelFactory {
                     } else {
                         IRI id = createNodeShapeID(shaclBasePrefix, shaclBaseIRI, "ShapeAnd", combination);
 
-                        NodeShape shapeAnd = new NodeShape(id, combination.stream().map(TriplesMap::getSubjectMap).toArray(SubjectMap[]::new));
+                        NodeShape shapeAnd = new NodeShape(id, combination.stream().map(TriplesMap::getSubjectMap).toArray(SubjectMap[]::new)); // create ShapeAnd
+                        Set<PropertyShape> propertyShapes = getPropertyShapesForShapeAnd(shaclBasePrefix, shaclBaseIRI, combination, tmcrMap); // create PropertyShapes for ShapeAnd
+                        propertyShapes.stream().map(PropertyShape::getId).forEach(shapeAnd::addPropertyShape); // assign PropertyShapes to ShapeAnd
 
-                        combination.stream().forEach(triplesMap -> nodeShapeIdsInferredFromTriplesMap.get(triplesMap).add(id));
-                        inferredShapes.add(shapeAnd);
+                        inferredShapes.add(shapeAnd); // add ShapeAnd to inferredShapes
+                        propertyShapes.stream().forEach(inferredShapes::add); // add PropertyShapes to inferredShapes
+
+                        combination.stream().forEach(triplesMap -> nodeShapeIdsInferredFromTriplesMap.get(triplesMap).add(id)); // add ShapeAnd's id for ShapeOr
                     }
                 }
             }
@@ -339,9 +347,42 @@ public class SHACLDocModelFactory {
         return inferredShapes;
     }
 
+    private static Set<PropertyShape> getPropertyShapesForShapeAnd(String shaclBasePrefix, URI shaclBaseIRI, Set<TriplesMap> triplesMaps, Map<TriplesMap, ConversionResult> tmcrMap) {
+        Set<PropertyShape> propertyShapes = new TreeSet<>();
+
+        for (TriplesMap triplesMap: triplesMaps) {
+            ConversionResult conversionResult = tmcrMap.get(triplesMap);
+            for (PropertyShape existingPropertyShape: conversionResult.propertyShapes) {
+                if (existingPropertyShape.getInverse() || existingPropertyShape.isRepeatedProperty()) {
+                    propertyShapes.add(existingPropertyShape);
+                    continue;
+                }
+
+                PredicateMap predicateMap = conversionResult.propertyShapePredicateObjectPairMap.get(existingPropertyShape).getPredicateMap();
+                boolean isRepeatedPredicate = isRepeatedPredicate(triplesMaps, predicateMap);
+                if (isRepeatedPredicate) {
+                    IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, true, conversionResult, false);
+
+                    try {
+                        PropertyShape newPropertyShape = existingPropertyShape.clone();
+                        newPropertyShape.setId(propertyShapeID);
+                        newPropertyShape.setIsRepeatedProperty(true);
+
+                        propertyShapes.add(newPropertyShape);
+                    } catch (CloneNotSupportedException e) {
+                        System.err.println("Failed clone of PropertyShape");
+                    }
+                }
+            }
+        }
+
+        return propertyShapes;
+    }
+
     private static class ConversionResult {
         private NodeShape nodeShape; // from the subject map
         private Set<PropertyShape> propertyShapes = new TreeSet<>(); // from predicate object maps
+        private Map<PropertyShape, PredicateObjectMap.PredicateObjectPair> propertyShapePredicateObjectPairMap = new HashMap<>();
         private IRI referenceId4NodeShape; // if (groupSize > 1) id of inferredNodeShapeId(sh:or with sh:and) if (groupSize == 1) convertedNodeShapeId
     }
 }

@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/Shape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0004a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0004a-CSV/test.ttl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Added GroupBy">
-      <created>1643975851692</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1643975851692</updated>
     </task>
     <task id="LOCAL-00037" summary="Building join operation">
       <created>1644061549405</created>
@@ -472,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657165671104</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Building INFERRED_AND">
+      <created>1657171777985</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1657171777985</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -480,7 +484,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fill in the missing d2rq:jdbcDSN for PostgreSQL" />
     <MESSAGE value="Fill in the missing d2rq:jdbcDSN for SQLServer" />
     <MESSAGE value="Fixed minOccurs" />
     <MESSAGE value="Finished testing with CSV" />
@@ -505,7 +508,8 @@
     <MESSAGE value="Fixed for 6a-CSV" />
     <MESSAGE value="Ready to fix for ShapeAnd" />
     <MESSAGE value="modified getSerializedShape()" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified getSerializedShape()" />
+    <MESSAGE value="Building INFERRED_AND" />
+    <option name="LAST_COMMIT_MESSAGE" value="Building INFERRED_AND" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

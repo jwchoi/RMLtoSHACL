@@ -6,13 +6,10 @@ import rml2shacl.datasource.Column;
 import rml2shacl.datasource.DataSource;
 import rml2shacl.model.rml.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class PropertyShape extends Shape {
+public class PropertyShape extends Shape implements Cloneable {
     private boolean inverse;
     private boolean isRepeatedProperty;
 
@@ -41,7 +38,7 @@ public class PropertyShape extends Shape {
     private Optional<Long> minCount; // if empty, 0
     private Optional<Long> maxCount; // if empty, -1. && -1 is treated as unbounded
 
-    private enum Type { OBJECT_MAP, REF_OBJECT_MAP }
+    private enum Type {OBJECT_MAP, REF_OBJECT_MAP}
 
     private Type type;
 
@@ -115,11 +112,21 @@ public class PropertyShape extends Shape {
         setMaxCount(objectMap, maxOccurs);
     }
 
-    private void setIsRepeatedProperty(boolean isRepeatedProperty) { this.isRepeatedProperty = isRepeatedProperty; }
+    boolean isRepeatedProperty() { return isRepeatedProperty; }
 
-    private void setInverse(boolean inverse) { this.inverse = inverse; }
+    void setIsRepeatedProperty(boolean isRepeatedProperty) {
+        this.isRepeatedProperty = isRepeatedProperty;
+    }
 
-    private void setPath(PredicateMap predicateMap) { path = predicateMap.getIRIConstant().get(); }
+    boolean getInverse() { return inverse; }
+
+    private void setInverse(boolean inverse) {
+        this.inverse = inverse;
+    }
+
+    private void setPath(PredicateMap predicateMap) {
+        path = predicateMap.getIRIConstant().get();
+    }
 
     private void convert(ObjectMap objectMap) {
         setNodeKind(objectMap); // sh:nodeKind
@@ -181,7 +188,7 @@ public class PropertyShape extends Shape {
 
             // logical references
             List<Column> logicalReferences = template.get().getLogicalReferences();
-            for (Column logicalReference: logicalReferences) {
+            for (Column logicalReference : logicalReferences) {
                 String columnName = logicalReference.getName();
                 String quantifier = logicalReference.getMinLength().isPresent() ? "{" + logicalReference.getMinLength().get() + ",}" : "*";
                 format = format.replace("{" + columnName + "}", "(." + quantifier + ")");
@@ -226,14 +233,16 @@ public class PropertyShape extends Shape {
         if (optionalColumn.isPresent() || optionalReference.isPresent()) {
             Column column = optionalColumn.isPresent() ? optionalColumn.get() : optionalReference.get();
 
-            if (column.getType().isPresent() && column.isStringType().isPresent() && column.isStringType().get()){ /* only if string type */
+            if (column.getType().isPresent() && column.isStringType().isPresent() && column.isStringType().get()) { /* only if string type */
                 minLength = column.getMinLength();
                 maxLength = column.getMaxLength();
             }
         }
     }
 
-    private void setNode(IRI node) { this.node = Optional.ofNullable(node); }
+    private void setNode(IRI node) {
+        this.node = Optional.ofNullable(node);
+    }
 
     private void setMinCount(ObjectMap objectMap, Optional<Long> minOccurs) {
         // the default cardinality
@@ -266,8 +275,13 @@ public class PropertyShape extends Shape {
         }
     }
 
-    private void setMinCount(long minCount) { this.minCount = (minCount != 0) ? Optional.of(minCount) : Optional.empty(); }
-    private void setMaxCount(long maxCount) { this.maxCount = (maxCount != -1) ? Optional.of(maxCount) : Optional.empty(); }
+    private void setMinCount(long minCount) {
+        this.minCount = (minCount != 0) ? Optional.of(minCount) : Optional.empty();
+    }
+
+    private void setMaxCount(long maxCount) {
+        this.maxCount = (maxCount != -1) ? Optional.of(maxCount) : Optional.empty();
+    }
 
     private List<String> buildSerializedPropertyShapeFromPredicateObjectMap() {
         List<String> pos = new ArrayList<>();
@@ -344,7 +358,7 @@ public class PropertyShape extends Shape {
         if (pattern.isPresent()) {
             o = pattern.get();
 
-             pos.add(getPO("sh:pattern", o));
+            pos.add(getPO("sh:pattern", o));
         }
 
         if (isRepeatedProperty) {
@@ -353,8 +367,7 @@ public class PropertyShape extends Shape {
             o = Symbols.OPEN_BRACKET + Symbols.NEWLINE + o + Symbols.CLOSE_BRACKET;
 
             return Arrays.asList(getPO("sh:qualifiedValueShape", o));
-        }
-        else return pos;
+        } else return pos;
     }
 
     private List<String> buildSerializedPropertyShapeFromPredicateRefObjectMap() {
@@ -430,5 +443,10 @@ public class PropertyShape extends Shape {
         sb.append(constraints);
 
         return sb.toString();
+    }
+
+    @Override
+    protected PropertyShape clone() throws CloneNotSupportedException {
+        return (PropertyShape) super.clone();
     }
 }

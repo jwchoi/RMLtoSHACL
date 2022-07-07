@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class NodeShape extends Shape {
-    enum Type {MAPPED, INFERRED_AND, INFERRED_OR}
+    enum Type {SINGLE_MAPPED, MULTIPLE_MAPPED, INFERRED_OR}
 
     private Type type;
 
@@ -42,14 +42,14 @@ public class NodeShape extends Shape {
     NodeShape(IRI id, SubjectMap subjectMap) {
         this(id);
 
-        type = Type.MAPPED;
+        type = Type.SINGLE_MAPPED;
         convert(subjectMap);
     }
 
     NodeShape(IRI id, SubjectMap... subjectMaps) {
         this(id);
 
-        type = Type.INFERRED_AND;
+        type = Type.MULTIPLE_MAPPED;
         convert(subjectMaps);
     }
 
@@ -91,9 +91,7 @@ public class NodeShape extends Shape {
         setNodeKind(Arrays.stream(subjectMaps).findAny().get()); // all nodeKinds are the same.
         Arrays.stream(subjectMaps).forEach(this::setClasses); // classes are all added.
         setPattern(subjectMaps);
-        setHasValue();
-
-
+        if (pattern.isEmpty() ) setHasValue(Arrays.stream(subjectMaps).findAny().get()); // if exists, all IRI constants are the same.
     }
 
     private void setNodeKind(SubjectMap subjectMap) {
@@ -113,23 +111,62 @@ public class NodeShape extends Shape {
 
     private void setHasValue(SubjectMap subjectMap) { hasValue = subjectMap.getIRIConstant(); }
 
+    private void setPattern(SubjectMap... subjectMaps) {
+        // only if rr:termType is rr:IRI
+        if (!nodeKind.get().equals(NodeKinds.IRI)) return;
+
+        // filter non-null templates
+        Set<Template> templates = Arrays.stream(subjectMaps)
+                .map(SubjectMap::getTemplate)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toSet());
+
+        // find minLengths that mean maximum values of minLengths
+        int[] minLengths = new int[templates.stream().findAny().get().getLogicalReferences().size()];
+
+        for (Template template: templates) {
+            List<Column> logicalReferences = template.getLogicalReferences();
+            for (int i = 0; i < logicalReferences.size(); i++) {
+                Column column = logicalReferences.get(i);
+                int minLength = column.getMinLength().orElse(0);
+                if (minLength > minLengths[i]) minLengths[i] = minLength;
+            }
+        }
+
+        // build pattern string
+        Template template = templates.stream().findAny().get();
+        String format = template.getFormat();
+
+        // logical references
+        List<Column> logicalReferences = template.getLogicalReferences();
+        for (int i = 0; i < logicalReferences.size(); i++) {
+            Column column = logicalReferences.get(i);
+            String columnName = column.getName();
+            String quantifier = minLengths[i] > 0 ? "{" + minLengths[i] + ",}" : "*";
+            format = format.replace("{" + columnName + "}", "(." + quantifier + ")");
+        }
+
+        pattern = Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
+    }
+
     private void setPattern(SubjectMap subjectMap) {
         // only if rr:termType is rr:IRI
-        if (nodeKind.get().equals(NodeKinds.IRI)) {
-            Optional<Template> template = subjectMap.getTemplate();
-            if (template.isPresent()) {
-                String format = template.get().getFormat();
+        if (!nodeKind.get().equals(NodeKinds.IRI)) return;
 
-                // logical references
-                List<Column> logicalReferences = template.get().getLogicalReferences();
-                for (Column logicalReference: logicalReferences) {
-                    String columnName = logicalReference.getName();
-                    String quantifier = logicalReference.getMinLength().isPresent() ? "{" + logicalReference.getMinLength().get() + ",}" : "*";
-                    format = format.replace("{" + columnName + "}", "(." + quantifier + ")");
-                }
+        Optional<Template> template = subjectMap.getTemplate();
+        if (template.isPresent()) {
+            String format = template.get().getFormat();
 
-                pattern = Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
+            // logical references
+            List<Column> logicalReferences = template.get().getLogicalReferences();
+            for (Column logicalReference: logicalReferences) {
+                String columnName = logicalReference.getName();
+                String quantifier = logicalReference.getMinLength().isPresent() ? "{" + logicalReference.getMinLength().get() + ",}" : "*";
+                format = format.replace("{" + columnName + "}", "(." + quantifier + ")");
             }
+
+            pattern = Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
         }
     }
 
@@ -178,8 +215,8 @@ public class NodeShape extends Shape {
         return pos;
     }
 
-    private String buildSerializedInferredNodeShape(Type type) {
-        String constraint = type.equals(Type.INFERRED_AND) ? "sh:and" : "sh:or";
+    private String buildSerializedInferredNodeShape() {
+        String constraint = "sh:or";
 
         String delimiter = Symbols.NEWLINE;
         String shaclList = nodeShapeIRIs.stream()
@@ -200,9 +237,8 @@ public class NodeShape extends Shape {
         pos.add(getPO(Symbols.A, "sh:NodeShape"));
 
         switch (type) {
-            case MAPPED -> pos.addAll(buildSerializedMappedNodeShape());
-            case INFERRED_AND -> pos.add(buildSerializedInferredNodeShape(Type.INFERRED_AND));
-            case INFERRED_OR -> pos.add(buildSerializedInferredNodeShape(Type.INFERRED_OR));
+            case SINGLE_MAPPED, MULTIPLE_MAPPED -> pos.addAll(buildSerializedMappedNodeShape());
+            case INFERRED_OR -> pos.add(buildSerializedInferredNodeShape());
         }
 
         String delimiter = Symbols.SPACE + Symbols.SEMICOLON + Symbols.NEWLINE;
