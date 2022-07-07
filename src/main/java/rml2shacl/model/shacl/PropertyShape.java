@@ -6,9 +6,11 @@ import rml2shacl.datasource.Column;
 import rml2shacl.datasource.DataSource;
 import rml2shacl.model.rml.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PropertyShape extends Shape {
     private boolean inverse;
@@ -267,8 +269,8 @@ public class PropertyShape extends Shape {
     private void setMinCount(long minCount) { this.minCount = (minCount != 0) ? Optional.of(minCount) : Optional.empty(); }
     private void setMaxCount(long maxCount) { this.maxCount = (maxCount != -1) ? Optional.of(maxCount) : Optional.empty(); }
 
-    private String buildSerializedPropertyShapeFromPredicateObjectMap() {
-        StringBuilder sb = new StringBuilder();
+    private List<String> buildSerializedPropertyShapeFromPredicateObjectMap() {
+        List<String> pos = new ArrayList<>();
 
         String o; // to be used as objects of different RDF triples
 
@@ -281,10 +283,7 @@ public class PropertyShape extends Shape {
                 default -> null;
             };
 
-            if (o != null) {
-                sb.append(getPO("sh:nodeKind", o));
-                sb.append(getSNT());
-            }
+            if (o != null) pos.add(getPO("sh:nodeKind", o));
         }
 
         // sh:hasValue
@@ -297,79 +296,69 @@ public class PropertyShape extends Shape {
             if (iriValue.isPresent())
                 o = iriValue.get().getPrefixedNameOrElseAbsoluteIRI();
 
-            if (isRepeatedProperty)
-                sb.append(getPO("sh:qualifiedValueShape", getUBN("sh:hasValue", o)));
-            else
-                sb.append(getPO("sh:hasValue", o));
-
-            sb.append(getSNT());
+            pos.add(getPO("sh:hasValue", o));
         }
 
         // sh:languageIn
         if (languageTag.isPresent()) {
             o = Symbols.OPEN_PARENTHESIS + Symbols.SPACE + Symbols.DOUBLE_QUOTATION_MARK + languageTag.get() + Symbols.DOUBLE_QUOTATION_MARK + Symbols.SPACE + Symbols.CLOSE_PARENTHESIS;
-            sb.append(getPO("sh:languageIn", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:languageIn", o));
         }
 
         // sh:datatype
         if (languageTag.isEmpty() && datatype.isPresent()) {
             o = datatype.get().getPrefixedNameOrElseAbsoluteIRI();
 
-            sb.append(getPO("sh:datatype", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:datatype", o));
         }
 
         // sh:minLength
         if (minLength.isPresent()) {
             o = minLength.get().toString();
 
-            sb.append(getPO("sh:minLength", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:minLength", o));
         }
 
         // sh:maxLength
         if (maxLength.isPresent()) {
             o = maxLength.get().toString();
 
-            sb.append(getPO("sh:maxLength", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:maxLength", o));
         }
 
         // sh:minInclusive
         if (minInclusive.isPresent()) {
             o = minInclusive.get();
 
-            sb.append(getPO("sh:minInclusive", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:minInclusive", o));
         }
 
         // sh:maxInclusive
         if (maxInclusive.isPresent()) {
             o = maxInclusive.get();
 
-            sb.append(getPO("sh:maxInclusive", o));
-            sb.append(getSNT());
+            pos.add(getPO("sh:maxInclusive", o));
         }
 
         // sh:pattern
         if (pattern.isPresent()) {
             o = pattern.get();
 
-            if (isRepeatedProperty)
-                sb.append(getPO("sh:qualifiedValueShape", getUBN("sh:pattern", o)));
-            else
-                sb.append(getPO("sh:pattern", o));
-
-            sb.append(getSNT());
+             pos.add(getPO("sh:pattern", o));
         }
 
-        return sb.toString();
+        if (isRepeatedProperty) {
+            String delimiter = Symbols.SPACE + Symbols.SEMICOLON + Symbols.NEWLINE;
+            o = pos.stream().collect(Collectors.joining(delimiter)).indent(4);
+            o = Symbols.OPEN_BRACKET + Symbols.NEWLINE + o + Symbols.CLOSE_BRACKET;
+
+            return Arrays.asList(getPO("sh:qualifiedValueShape", o));
+        }
+        else return pos;
     }
 
-    private String buildSerializedPropertyShapeFromPredicateRefObjectMap() {
-
-        StringBuffer sb = new StringBuffer();
+    private List<String> buildSerializedPropertyShapeFromPredicateRefObjectMap() {
+        List<String> pos = new ArrayList<>();
 
         String o; // to be used as objects of different RDF triples
 
@@ -378,37 +367,34 @@ public class PropertyShape extends Shape {
             o = node.get().getPrefixedNameOrElseAbsoluteIRI();
 
             if (isRepeatedProperty)
-                sb.append(getPO("sh:qualifiedValueShape", getUBN("sh:node", o)));
+                pos.add(getPO("sh:qualifiedValueShape", getUBN("sh:node", o)));
             else
-                sb.append(getPO("sh:node", o));
-
-            sb.append(getSNT());
+                pos.add(getPO("sh:node", o));
         }
 
-        return sb.toString();
+        return pos;
     }
 
     @Override
     public String getSerializedShape() {
         StringBuffer sb = new StringBuffer(super.getSerializedShape());
-        sb.append(getNT());
+
+        List<String> pos = new ArrayList<>();
 
         String o; // to be used as objects of different RDF triples
 
         // rdf:type sh:PropertyShape
         o = "sh:PropertyShape";
-        sb.append(getPO(Symbols.A, o));
-        sb.append(getSNT());
+        pos.add(getPO(Symbols.A, o));
 
         // sh:path
         o = path.getPrefixedNameOrElseAbsoluteIRI();
         if (inverse) o = getUBN("sh:inversePath", o);
-        sb.append(getPO("sh:path", o));
-        sb.append(getSNT());
+        pos.add(getPO("sh:path", o));
 
         switch (type) {
-            case OBJECT_MAP -> sb.append(buildSerializedPropertyShapeFromPredicateObjectMap());
-            case REF_OBJECT_MAP -> sb.append(buildSerializedPropertyShapeFromPredicateRefObjectMap());
+            case OBJECT_MAP -> pos.addAll(buildSerializedPropertyShapeFromPredicateObjectMap());
+            case REF_OBJECT_MAP -> pos.addAll(buildSerializedPropertyShapeFromPredicateRefObjectMap());
         }
 
         // sh:minCount
@@ -416,11 +402,9 @@ public class PropertyShape extends Shape {
             o = minCount.get().toString();
 
             if (isRepeatedProperty)
-                sb.append(getPO("sh:qualifiedMinCount", o));
+                pos.add(getPO("sh:qualifiedMinCount", o));
             else
-                sb.append(getPO("sh:minCount", o));
-
-            sb.append(getSNT());
+                pos.add(getPO("sh:minCount", o));
         }
 
         // sh:maxCount
@@ -428,21 +412,22 @@ public class PropertyShape extends Shape {
             o = maxCount.get().toString();
 
             if (isRepeatedProperty)
-                sb.append(getPO("sh:qualifiedMaxCount", o));
+                pos.add(getPO("sh:qualifiedMaxCount", o));
             else
-                sb.append(getPO("sh:maxCount", o));
-
-            sb.append(getSNT());
+                pos.add(getPO("sh:maxCount", o));
         }
 
         // sh:qualifiedValueShapesDisjoint
         if (isRepeatedProperty) {
-            sb.append(getPO("sh:qualifiedValueShapesDisjoint", "true"));
-            sb.append(getSNT());
+            pos.add(getPO("sh:qualifiedValueShapesDisjoint", "true"));
         }
 
-        sb.setLength(sb.lastIndexOf(Symbols.SEMICOLON));
-        sb.append(getDNT());
+        String delimiter = Symbols.SPACE + Symbols.SEMICOLON + Symbols.NEWLINE;
+        String prefix = Symbols.NEWLINE;
+        String suffix = Symbols.SPACE + Symbols.DOT;
+        String constraints = pos.stream().collect(Collectors.joining(delimiter, prefix, suffix)).indent(4);
+
+        sb.append(constraints);
 
         return sb.toString();
     }
