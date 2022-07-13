@@ -355,7 +355,8 @@ public class SHACLDocModelFactory {
                     } catch (CloneNotSupportedException e) {
                         System.err.println("Failed clone of PropertyShape");
                     }
-                }
+                } else
+                    propertyShapes.add(existingPropertyShape);
             }
         }
 
