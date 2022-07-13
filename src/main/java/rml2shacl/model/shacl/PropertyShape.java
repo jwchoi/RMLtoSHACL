@@ -79,6 +79,9 @@ public class PropertyShape extends Shape implements Cloneable {
         setNode(referenceIdFromRefObjectMap);
 
         // for cardinality
+        setMinCount(0); // by default
+        setMaxCount(-1); // by default
+
         if (minOccurs.isPresent() && minOccurs.get() > 0) setMinCount(1);
         if (maxOccurs.isPresent()) {
             if (maxOccurs.get() == 0) setMaxCount(0);
