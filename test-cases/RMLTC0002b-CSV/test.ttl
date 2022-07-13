@@ -10,17 +10,17 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-my:TriplesMap1Shape
+my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:nodeKind sh:BlankNode ;
-    sh:property my:TriplesMap1Shape-foaf-name  .
-    
-my:TriplesMap1Shape-foaf-name
+    sh:property my:TriplesMap1Shape-foaf-name .
+
+my:TriplesMap1Shape-foaf-name    
     a sh:PropertyShape ;
     sh:path foaf:name ;
     sh:nodeKind sh:Literal ;
     sh:minLength 5 ;
     sh:maxLength 5 ;
     sh:minCount 1 ;
-    sh:maxCount 1  .
-    
+    sh:maxCount 1 .
+

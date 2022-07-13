@@ -10,17 +10,17 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-my:TriplesMap1Shape
+my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:hasValue ex:BadStudent ;
-    sh:property my:TriplesMap1Shape-ex-description  .
-    
-my:TriplesMap1Shape-ex-description
+    sh:property my:TriplesMap1Shape-ex-description .
+
+my:TriplesMap1Shape-ex-description    
     a sh:PropertyShape ;
     sh:path ex:description ;
     sh:nodeKind sh:Literal ;
     sh:hasValue "Bad Student" ;
     sh:minCount 1 ;
-    sh:maxCount 1  .
-    
+    sh:maxCount 1 .
+

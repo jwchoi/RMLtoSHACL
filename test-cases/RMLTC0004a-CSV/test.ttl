@@ -49,10 +49,9 @@ my:TriplesMap1Shape-foaf-name-q1
 
 my:TriplesMap1ShapeOr    
     a sh:NodeShape ;
-    sh:or(
+    sh:or (
         my:TriplesMap1-TriplesMap2ShapeAnd
         my:TriplesMap1Shape
-    
     ) .
 
 my:TriplesMap2Shape    
@@ -85,9 +84,8 @@ my:TriplesMap2Shape-foaf-name-q1
 
 my:TriplesMap2ShapeOr    
     a sh:NodeShape ;
-    sh:or(
+    sh:or (
         my:TriplesMap1-TriplesMap2ShapeAnd
         my:TriplesMap2Shape
-    
     ) .
 

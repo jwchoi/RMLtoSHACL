@@ -10,15 +10,15 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-my:TriplesMap1Shape
+my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/(.{2,})/(.{5,})$" ;
-    sh:property my:TriplesMap1Shape-ex-id  .
-    
-my:TriplesMap1Shape-ex-id
+    sh:property my:TriplesMap1Shape-ex-id .
+
+my:TriplesMap1Shape-ex-id    
     a sh:PropertyShape ;
     sh:path ex:id ;
     sh:nodeKind sh:Literal ;
-    sh:maxCount 0  .
-    
+    sh:maxCount 0 .
+

@@ -224,7 +224,7 @@ public class NodeShape extends Shape {
                 .sorted()
                 .collect(Collectors.joining(delimiter)).indent(4);
 
-        return constraint + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE + shaclList + Symbols.NEWLINE + Symbols.CLOSE_PARENTHESIS;
+        return constraint + Symbols.SPACE + Symbols.OPEN_PARENTHESIS + Symbols.NEWLINE + shaclList + Symbols.CLOSE_PARENTHESIS;
     }
 
     @Override

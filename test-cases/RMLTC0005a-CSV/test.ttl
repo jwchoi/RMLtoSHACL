@@ -10,17 +10,17 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
-my:TriplesMap1Shape
+my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:nodeKind sh:IRI ;
     sh:class foaf:Person ;
     sh:pattern "^http://example.com/(.{3,});(.{5,})$" ;
-    sh:property my:TriplesMap1Shape-ex-owes  .
-    
-my:TriplesMap1Shape-ex-owes
+    sh:property my:TriplesMap1Shape-ex-owes .
+
+my:TriplesMap1Shape-ex-owes    
     a sh:PropertyShape ;
     sh:path ex:owes ;
     sh:nodeKind sh:Literal ;
     sh:minCount 1 ;
-    sh:maxCount 1  .
-    
+    sh:maxCount 1 .
+
