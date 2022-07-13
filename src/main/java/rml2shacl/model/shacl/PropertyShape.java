@@ -10,7 +10,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PropertyShape extends Shape implements Cloneable {
-    private boolean inverse;
     private boolean isRepeatedProperty;
 
     private IRI path;
@@ -62,25 +61,15 @@ public class PropertyShape extends Shape implements Cloneable {
         convert(predicateMap, isRepeated, objectMap, minOccurs, maxOccurs);
     }
 
-    PropertyShape(IRI id, PredicateMap predicateMap, boolean isRepeated, IRI referenceIdFromRefObjectMap, Optional<Long> minOccurs, Optional<Long> maxOccurs, boolean inverse) {
+    PropertyShape(IRI id, PredicateMap predicateMap, boolean isRepeated, IRI referenceIdFromRefObjectMap, Optional<Long> minOccurs, Optional<Long> maxOccurs) {
         this(id);
 
         type = Type.REF_OBJECT_MAP;
 
-        convert(predicateMap, isRepeated, referenceIdFromRefObjectMap, minOccurs, maxOccurs, inverse);
+        convert(predicateMap, isRepeated, referenceIdFromRefObjectMap, minOccurs, maxOccurs);
     }
 
-    PropertyShape(IRI id, PredicateMap predicateMap, IRI referenceIdFromRefObjectMap, Optional<Long> minOccurs, Optional<Long> maxOccurs, boolean inverse) {
-        this(id);
-
-        type = Type.REF_OBJECT_MAP;
-
-        boolean isRepeated = false;
-        convert(predicateMap, isRepeated, referenceIdFromRefObjectMap, minOccurs, maxOccurs, inverse);
-    }
-
-    private void convert(PredicateMap predicateMap, boolean isRepeated, IRI referenceIdFromRefObjectMap, Optional<Long> minOccurs, Optional<Long> maxOccurs, boolean inverse) {
-        setInverse(inverse);
+    private void convert(PredicateMap predicateMap, boolean isRepeated, IRI referenceIdFromRefObjectMap, Optional<Long> minOccurs, Optional<Long> maxOccurs) {
         setIsRepeatedProperty(isRepeated);
 
         // for predicate
@@ -98,7 +87,6 @@ public class PropertyShape extends Shape implements Cloneable {
     }
 
     private void convert(PredicateMap predicateMap, boolean isRepeated, ObjectMap objectMap, Optional<Long> minOccurs, Optional<Long> maxOccurs) {
-        setInverse(false);
         setIsRepeatedProperty(isRepeated);
 
         // for predicate
@@ -116,12 +104,6 @@ public class PropertyShape extends Shape implements Cloneable {
 
     void setIsRepeatedProperty(boolean isRepeatedProperty) {
         this.isRepeatedProperty = isRepeatedProperty;
-    }
-
-    boolean getInverse() { return inverse; }
-
-    private void setInverse(boolean inverse) {
-        this.inverse = inverse;
     }
 
     private void setPath(PredicateMap predicateMap) {
@@ -402,7 +384,6 @@ public class PropertyShape extends Shape implements Cloneable {
 
         // sh:path
         o = path.getPrefixedNameOrElseAbsoluteIRI();
-        if (inverse) o = getUBN("sh:inversePath", o);
         pos.add(getPO("sh:path", o));
 
         switch (type) {

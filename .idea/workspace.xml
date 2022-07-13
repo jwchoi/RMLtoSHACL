@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007e-CSV/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007f-CSV/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007g-CSV/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008a-CSV/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008b-CSV/test.ttl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/model/shacl/SHACLDocModelFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0000-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001b-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002b-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002c-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002e-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0003c-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0004a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0004a-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0005a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-CSV/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0006a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00038" summary="acquireMinOccurs under the construction">
-      <created>1644147599699</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1644147599699</updated>
     </task>
     <task id="LOCAL-00039" summary="added maxOccurs to TripleConstraint">
       <created>1644217095932</created>
@@ -483,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657199782142</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Ready to remove inversePath.">
+      <created>1657700904125</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1657700904129</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -491,7 +485,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed minOccurs" />
     <MESSAGE value="Finished testing with CSV" />
     <MESSAGE value="Finished testing with JSON" />
     <MESSAGE value="Finished testing with XML" />
@@ -516,7 +509,8 @@
     <MESSAGE value="modified getSerializedShape()" />
     <MESSAGE value="Building INFERRED_AND" />
     <MESSAGE value="Finished the first version for MAPPED_AND" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the first version for MAPPED_AND" />
+    <MESSAGE value="Ready to remove inversePath." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready to remove inversePath." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

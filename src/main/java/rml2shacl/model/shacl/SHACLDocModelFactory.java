@@ -142,7 +142,7 @@ public class SHACLDocModelFactory {
                 PredicateMap predicateMap = predicateObjectPair.getPredicateMap();
 
                 boolean isRepeatedPredicate = isRepeatedPredicate(Set.of(triplesMap), predicateMap);
-                IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, isRepeatedPredicate, conversionResult, false);
+                IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, isRepeatedPredicate, conversionResult);
 
                 // when object map
                 if (predicateObjectPair.getObjectMap().isPresent()) {
@@ -182,7 +182,7 @@ public class SHACLDocModelFactory {
         return false;
     }
 
-    private static IRI createPropertyShapeID(String shaclBasePrefix, URI shaclBaseIRI, PredicateMap predicateMap, boolean isRepeated, ConversionResult conversionResult, boolean isInverse) {
+    private static IRI createPropertyShapeID(String shaclBasePrefix, URI shaclBaseIRI, PredicateMap predicateMap, boolean isRepeated, ConversionResult conversionResult) {
         IRI predicateIRI = predicateMap.getIRIConstant().get();
 
         String localPart = predicateIRI.getLocalPart();
@@ -208,8 +208,6 @@ public class SHACLDocModelFactory {
 
             localPart = tempLocalPart;
         }
-
-        localPart = isInverse ? localPart + Symbols.DASH + "inverse" : localPart;
 
         return new IRI(shaclBasePrefix, shaclBaseIRI, localPart);
     }
@@ -239,27 +237,12 @@ public class SHACLDocModelFactory {
                         Optional<Long> minOccurs = predicateObjectPair.getMinOccurs();
                         Optional<Long> maxOccurs = predicateObjectPair.getMaxOccurs();
 
-                        IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, isRepeatedPredicate, conversionResult, false);
+                        IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, isRepeatedPredicate, conversionResult);
 
-                        PropertyShape pr2ps = new PropertyShape(propertyShapeID, predicateMap, isRepeatedPredicate, referenceIdFromParentTriplesMap, minOccurs, maxOccurs, false);
+                        PropertyShape pr2ps = new PropertyShape(propertyShapeID, predicateMap, isRepeatedPredicate, referenceIdFromParentTriplesMap, minOccurs, maxOccurs);
 
                         conversionResult.propertyShapes.add(pr2ps);
                         conversionResult.propertyShapePredicateObjectPairMap.put(pr2ps, predicateObjectPair);
-
-                        // for inverse
-                        URI uriOfChildTriplesMap = triplesMap.getUri();
-                        IRI referenceIdFromChildTriplesMap = getReferenceIdFromTriplesMap(uriOfChildTriplesMap, tmcrMap);
-
-                        Optional<Long> inverseMinOccurs = predicateObjectPair.getInverseMinOccurs();
-                        Optional<Long> inverseMaxOccurs = predicateObjectPair.getInverseMaxOccurs();
-
-                        IRI inversePropertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, isRepeatedPredicate, conversionResult, true);
-
-                        PropertyShape pr2InversePs = new PropertyShape(inversePropertyShapeID, predicateMap, referenceIdFromChildTriplesMap, inverseMinOccurs, inverseMaxOccurs, true);
-
-                        TriplesMap parentTriplesMap = triplesMaps.stream().filter(tm -> tm.getUri().equals(uriOfParentTriplesMap)).findAny().get();
-                        ConversionResult conversionResultCorrespondingToParentTriplesMap = tmcrMap.get(parentTriplesMap);
-                        conversionResultCorrespondingToParentTriplesMap.propertyShapes.add(pr2InversePs);
                     }
                 }
             }
@@ -353,7 +336,7 @@ public class SHACLDocModelFactory {
         for (TriplesMap triplesMap: triplesMaps) {
             ConversionResult conversionResult = tmcrMap.get(triplesMap);
             for (PropertyShape existingPropertyShape: conversionResult.propertyShapes) {
-                if (existingPropertyShape.getInverse() || existingPropertyShape.isRepeatedProperty()) {
+                if (existingPropertyShape.isRepeatedProperty()) {
                     propertyShapes.add(existingPropertyShape);
                     continue;
                 }
@@ -361,7 +344,7 @@ public class SHACLDocModelFactory {
                 PredicateMap predicateMap = conversionResult.propertyShapePredicateObjectPairMap.get(existingPropertyShape).getPredicateMap();
                 boolean isRepeatedPredicate = isRepeatedPredicate(triplesMaps, predicateMap);
                 if (isRepeatedPredicate) {
-                    IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, true, conversionResult, false);
+                    IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, true, conversionResult);
 
                     try {
                         PropertyShape newPropertyShape = existingPropertyShape.clone();
