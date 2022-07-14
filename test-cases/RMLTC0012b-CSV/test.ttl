@@ -1,0 +1,62 @@
+@base <http://my.example/ns#> .
+@prefix ex: <http://example.com/> .
+@prefix my: <http://my.example/ns#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+my:TriplesMap1-TriplesMap2ShapeAnd    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property my:TriplesMap1Shape-foaf-name ;
+    sh:property my:TriplesMap2Shape-ex-city .
+
+my:TriplesMap1Shape    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property my:TriplesMap1Shape-foaf-name .
+
+my:TriplesMap1Shape-foaf-name    
+    a sh:PropertyShape ;
+    sh:path foaf:name ;
+    sh:nodeKind sh:Literal ;
+    sh:pattern "^(.{3,}) (.{5,})$" ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap1ShapeOr    
+    a sh:NodeShape ;
+    sh:or (
+        my:TriplesMap1-TriplesMap2ShapeAnd
+        my:TriplesMap1Shape
+    ) .
+
+my:TriplesMap2Shape    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property my:TriplesMap2Shape-ex-city .
+
+my:TriplesMap2Shape-ex-city    
+    a sh:PropertyShape ;
+    sh:path ex:city ;
+    sh:nodeKind sh:Literal ;
+    sh:minLength 6 ;
+    sh:maxLength 6 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap2ShapeOr    
+    a sh:NodeShape ;
+    sh:or (
+        my:TriplesMap1-TriplesMap2ShapeAnd
+        my:TriplesMap2Shape
+    ) .
+

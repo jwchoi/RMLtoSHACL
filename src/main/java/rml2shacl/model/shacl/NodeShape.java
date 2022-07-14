@@ -15,13 +15,13 @@ public class NodeShape extends Shape {
 
     private Type type;
 
-    //->MAPPED & INFERRED_AND
+    //->MAPPED & MULTIPLE_MAPPED
     private Optional<NodeKinds> nodeKind; // sh:nodeKind
     private Set<IRI> classes; // sh:class
     private Optional<IRI> hasValue; //sh:hasValue
     private Optional<String> pattern; // sh:pattern
     private Set<IRI> propertyShapes;
-    //<-MAPPED & INFERRED_AND
+    //<-MAPPED & MULTIPLE_MAPPED
 
     //->INFERRED_OR
     private Set<IRI> nodeShapeIRIs;
@@ -61,14 +61,25 @@ public class NodeShape extends Shape {
     }
 
     boolean isEquivalent(NodeShape other) {
+        // nodeKind
         if (!nodeKind.equals(other.nodeKind)) return false;
 
-        if (pattern.stream().count() != other.pattern.stream().count()) return false;
+        // pattern
         if (pattern.isPresent() && other.pattern.isPresent()) {
             if (!isEquivalentPattern(other.pattern)) return false;
         }
 
+        // hasValue
         if (!hasValue.equals(other.hasValue)) return false;
+
+        // hasValue ⊂ pattern
+        if (hasValue.isPresent() && other.pattern.isPresent()) {
+            if (!hasValue.get().toString().matches(other.pattern.get())) return false;
+        }
+
+        if (other.hasValue.isPresent() && pattern.isPresent()) {
+            if (!other.hasValue.get().toString().matches(pattern.get())) return false;
+        }
 
         return true;
     }
@@ -176,6 +187,10 @@ public class NodeShape extends Shape {
         List<String> pos = new ArrayList<>();
 
         String o; // to be used as objects of different RDF triples
+
+        // sh:closed
+        o = "true";
+        pos.add(getPO("sh:closed", o));
 
         // sh:nodeKind
         if (nodeKind.isPresent()) {
