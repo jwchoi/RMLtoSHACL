@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0015a-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019a-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019b-CSV/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020a-CSV/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/student.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020b-CSV/test.ttl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0000-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001b-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002a-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002b-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002c-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002e-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-CSV/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0003c-CSV/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-CSV/test.ttl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +144,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Done both minOccurs and maxOccurs">
-      <created>1644293269418</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1644293269418</updated>
     </task>
     <task id="LOCAL-00044" summary="NumericFacet prepared">
       <created>1644294881861</created>
@@ -475,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657772217649</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Removed the condition disjoint.">
+      <created>1657774955527</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1657774955527</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -483,7 +496,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Finished testing with MySQL." />
     <MESSAGE value="Fixed for the length of binary, varbinary or longvarbinary" />
     <MESSAGE value="Fixed for the language tag (15b)" />
     <MESSAGE value="Fixed for the language tag (2i and 2f for PostgreSQL)" />
@@ -508,7 +520,8 @@
     <MESSAGE value="Added setting default value for minCount &amp; maxCount" />
     <MESSAGE value="Added non-repeated existing property shapes for ShapeAnd." />
     <MESSAGE value="Added sh:closed true for 12b." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sh:closed true for 12b." />
+    <MESSAGE value="Removed the condition disjoint." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed the condition disjoint." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

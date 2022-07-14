@@ -12,6 +12,7 @@
 
 my:TriplesMap1Shape    
     a sh:NodeShape ;
+    sh:closed true ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/Student(.{2,})$" ;
     sh:property my:TriplesMap1Shape-foaf-name .

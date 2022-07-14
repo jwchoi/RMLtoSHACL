@@ -188,9 +188,12 @@ public class NodeShape extends Shape {
 
         String o; // to be used as objects of different RDF triples
 
-        // sh:closed
+        // sh:closed & sh:ignoredProperties
         o = "true";
         pos.add(getPO("sh:closed", o));
+
+        o = Symbols.OPEN_PARENTHESIS + "rdf:type" + Symbols.CLOSE_PARENTHESIS;
+        pos.add(getPO("sh:ignoredProperties", o));
 
         // sh:nodeKind
         if (nodeKind.isPresent()) {

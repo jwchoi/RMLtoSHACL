@@ -12,6 +12,7 @@
 
 my:TriplesMap1Shape    
     a sh:NodeShape ;
+    sh:closed true ;
     sh:nodeKind sh:BlankNode ;
     sh:property my:TriplesMap1Shape-foaf-name .
 
