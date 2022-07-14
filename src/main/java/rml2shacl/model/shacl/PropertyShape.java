@@ -414,11 +414,6 @@ public class PropertyShape extends Shape implements Cloneable {
                 pos.add(getPO("sh:maxCount", o));
         }
 
-        // sh:qualifiedValueShapesDisjoint
-        if (isRepeatedProperty) {
-            pos.add(getPO("sh:qualifiedValueShapesDisjoint", "true"));
-        }
-
         String delimiter = Symbols.SPACE + Symbols.SEMICOLON + Symbols.NEWLINE;
         String prefix = Symbols.NEWLINE;
         String suffix = Symbols.SPACE + Symbols.DOT;
