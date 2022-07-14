@@ -5,40 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/temp/country_info.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/ious.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temp/sport.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002g-JSON/test.shex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002g-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007a-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007b-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007c-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007e-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007f-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007g-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008a-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008b-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008c-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009a-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009b-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010a-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010b-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010c-JSON/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0011b-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/country_info.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/ious.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/persons.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/sport.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/student.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp/student_sport.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0004a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007b-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007c-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007d-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007e-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007f-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007g-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008b-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008c-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009b-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010b-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010c-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0011b-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0012a-XML/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019b-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020a-JSON/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020b-JSON/test.ttl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/student.json" beforeDir="false" afterPath="$PROJECT_DIR$/temp/student.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp/student_sport.json" beforeDir="false" afterPath="$PROJECT_DIR$/temp/student_sport.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0000-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-JSON/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001a-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-JSON/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001b-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-JSON/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002a-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-JSON/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002b-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-JSON/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002c-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-JSON/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0002e-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-JSON/test.ttl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0003c-JSON/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-JSON/test.ttl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Ready for fixing XSFacet">
-      <created>1644314507903</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1644314507903</updated>
     </task>
     <task id="LOCAL-00047" summary="modified DataSourceExplorer, DataSource and JoinCondition">
       <created>1644374705555</created>
@@ -502,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657787406168</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="test done with JSON">
+      <created>1657791921474</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1657791921474</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -510,7 +514,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed for the language tag (2i and 2f for PostgreSQL)" />
     <MESSAGE value="Fixing for 9c-SQLServer" />
     <MESSAGE value="Passed all test cases." />
     <MESSAGE value="Prepared for building SHACLDocModel" />
@@ -535,7 +538,8 @@
     <MESSAGE value="Removed the condition disjoint." />
     <MESSAGE value="Added sh:ignoredProperties by default." />
     <MESSAGE value="test done with CSV" />
-    <option name="LAST_COMMIT_MESSAGE" value="test done with CSV" />
+    <MESSAGE value="test done with JSON" />
+    <option name="LAST_COMMIT_MESSAGE" value="test done with JSON" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
