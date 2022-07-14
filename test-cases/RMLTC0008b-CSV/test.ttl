@@ -13,6 +13,8 @@
 
 my:TriplesMap1Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/Student/(.{2,})/(.{14,})$" ;
     sh:property my:TriplesMap1Shape-ex-Sport ;
@@ -53,6 +55,8 @@ my:TriplesMap1Shape-rdf-type
 
 my:TriplesMap2Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/(.{6,})$" ;
     sh:property my:TriplesMap2Shape-rdf-type .

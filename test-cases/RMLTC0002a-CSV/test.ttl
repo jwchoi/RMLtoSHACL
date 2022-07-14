@@ -13,6 +13,7 @@
 my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:class foaf:Person ;
     sh:pattern "^http://example.com/(.{2,})/(.{5,})$" ;

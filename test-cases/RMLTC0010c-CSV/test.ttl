@@ -13,6 +13,8 @@
 
 my:TriplesMap1Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/(.{1,})/(.{7,})$" ;
     sh:property my:TriplesMap1Shape-ex-code .

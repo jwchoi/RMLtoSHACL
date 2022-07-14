@@ -13,14 +13,15 @@
 my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
-    sh:pattern "^http://example.com/(.*)$" ;
+    sh:pattern "^http://example.com/Student(.{2,})$" ;
     sh:property my:TriplesMap1Shape-foaf-name .
 
 my:TriplesMap1Shape-foaf-name    
     a sh:PropertyShape ;
     sh:path foaf:name ;
     sh:nodeKind sh:Literal ;
-    sh:maxCount 0 .
+    sh:pattern "^(.{5,}) (.{8,})$" ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
 

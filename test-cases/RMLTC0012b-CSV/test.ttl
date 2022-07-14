@@ -13,6 +13,7 @@
 my:TriplesMap1-TriplesMap2ShapeAnd    
     a sh:NodeShape ;
     sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:BlankNode ;
     sh:property my:TriplesMap1Shape-foaf-name ;
     sh:property my:TriplesMap2Shape-ex-city .
@@ -20,6 +21,7 @@ my:TriplesMap1-TriplesMap2ShapeAnd
 my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:BlankNode ;
     sh:property my:TriplesMap1Shape-foaf-name .
 
@@ -41,6 +43,7 @@ my:TriplesMap1ShapeOr
 my:TriplesMap2Shape    
     a sh:NodeShape ;
     sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:BlankNode ;
     sh:property my:TriplesMap2Shape-ex-city .
 

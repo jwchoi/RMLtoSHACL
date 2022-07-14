@@ -12,6 +12,8 @@
 
 my:LinkMap_1_2-TriplesMap1ShapeAnd    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/student/(.{2,})$" ;
     sh:property my:LinkMap_1_2Shape-ex-plays ;
@@ -20,6 +22,8 @@ my:LinkMap_1_2-TriplesMap1ShapeAnd
 
 my:LinkMap_1_2Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/student/(.{2,})$" ;
     sh:property my:LinkMap_1_2Shape-ex-plays .
@@ -40,6 +44,8 @@ my:LinkMap_1_2ShapeOr
 
 my:TriplesMap1Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/student/(.{2,})$" ;
     sh:property my:TriplesMap1Shape-ex-firstName ;
@@ -72,6 +78,8 @@ my:TriplesMap1ShapeOr
 
 my:TriplesMap2Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/sport/(.{3,})$" ;
     sh:property my:TriplesMap2Shape-ex-description ;

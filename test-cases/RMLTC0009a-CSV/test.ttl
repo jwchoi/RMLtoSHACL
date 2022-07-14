@@ -13,6 +13,8 @@
 
 my:TriplesMap1Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/resource/student_(.{2,})$" ;
     sh:property my:TriplesMap1Shape-foaf-name ;
@@ -35,6 +37,8 @@ my:TriplesMap1Shape-practises
 
 my:TriplesMap2Shape    
     a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/resource/sport_(.{3,})$" ;
     sh:property my:TriplesMap2Shape-rdfs-label .

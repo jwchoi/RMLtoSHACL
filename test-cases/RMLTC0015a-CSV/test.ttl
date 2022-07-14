@@ -13,6 +13,7 @@
 my:TriplesMap1-TriplesMap2ShapeAnd    
     a sh:NodeShape ;
     sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/(.{2,})$" ;
     sh:property my:TriplesMap1Shape-rdfs-label-q1 ;
@@ -21,6 +22,7 @@ my:TriplesMap1-TriplesMap2ShapeAnd
 my:TriplesMap1Shape    
     a sh:NodeShape ;
     sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/(.{2,})$" ;
     sh:property my:TriplesMap1Shape-rdfs-label .
@@ -45,8 +47,7 @@ my:TriplesMap1Shape-rdfs-label-q1
         sh:maxLength 31
     ] ;
     sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 ;
-    sh:qualifiedValueShapesDisjoint true .
+    sh:qualifiedMaxCount 1 .
 
 my:TriplesMap1ShapeOr    
     a sh:NodeShape ;
@@ -58,6 +59,7 @@ my:TriplesMap1ShapeOr
 my:TriplesMap2Shape    
     a sh:NodeShape ;
     sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^http://example.com/(.{2,})$" ;
     sh:property my:TriplesMap2Shape-rdfs-label .
@@ -82,8 +84,7 @@ my:TriplesMap2Shape-rdfs-label-q1
         sh:maxLength 31
     ] ;
     sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 ;
-    sh:qualifiedValueShapesDisjoint true .
+    sh:qualifiedMaxCount 1 .
 
 my:TriplesMap2ShapeOr    
     a sh:NodeShape ;
