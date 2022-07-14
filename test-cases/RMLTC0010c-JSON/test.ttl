@@ -1,5 +1,6 @@
 @base <http://my.example/ns#> .
 @prefix ex: <http://example.com/> .
+@prefix activity: <http://example.com/activity/> .
 @prefix my: <http://my.example/ns#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
@@ -15,12 +16,14 @@ my:TriplesMap1Shape
     sh:closed true ;
     sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
-    sh:pattern "^http://example.com/(.*)$" ;
-    sh:property my:TriplesMap1Shape-foaf-name .
+    sh:pattern "^http://example.com/(.{1,})/(.{7,})$" ;
+    sh:property my:TriplesMap1Shape-ex-code .
 
-my:TriplesMap1Shape-foaf-name    
+my:TriplesMap1Shape-ex-code    
     a sh:PropertyShape ;
-    sh:path foaf:name ;
+    sh:path ex:code ;
     sh:nodeKind sh:Literal ;
-    sh:maxCount 0 .
+    sh:pattern "^{{{ (.{2,}) }}}$" ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
 

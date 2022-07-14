@@ -14,13 +14,22 @@ my:TriplesMap1Shape
     a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties (rdf:type) ;
-    sh:nodeKind sh:IRI ;
-    sh:pattern "^http://example.com/(.*)$" ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property my:TriplesMap1Shape-ex-amount ;
     sh:property my:TriplesMap1Shape-foaf-name .
+
+my:TriplesMap1Shape-ex-amount    
+    a sh:PropertyShape ;
+    sh:path ex:amount ;
+    sh:nodeKind sh:Literal ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
 
 my:TriplesMap1Shape-foaf-name    
     a sh:PropertyShape ;
     sh:path foaf:name ;
     sh:nodeKind sh:Literal ;
-    sh:maxCount 0 .
+    sh:pattern "^(.{3,}) (.{5,})$" ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
 
