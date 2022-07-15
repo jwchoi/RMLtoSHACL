@@ -5,10 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-MySQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005b-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007a-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007b-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007c-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007d-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007e-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007f-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007g-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008a-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008b-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008c-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009a-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009b-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009c-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009d-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010a-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010b-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010c-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0011a-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0011b-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0012a-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0012b-MySQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0012e-MySQL/test.ttl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/rml2shacl/commons/IRI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/rml2shacl/commons/IRI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/commons/IRI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/commons/IRI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,13 +151,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Added quantifier to REGEXP">
-      <created>1644389313525</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1644389313525</updated>
     </task>
     <task id="LOCAL-00050" summary="Ready to support JSON">
       <created>1644390498364</created>
@@ -473,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657870624070</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Removed souts.">
+      <created>1657871429018</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1657871429018</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -481,7 +503,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Prepared for building SHACLDocModel" />
     <MESSAGE value="Finished SHACLDocModelFactory" />
     <MESSAGE value="Ready to Serialize NodeShape" />
     <MESSAGE value="Finished building NodeShape" />
@@ -506,7 +527,8 @@
     <MESSAGE value="test done with JSON" />
     <MESSAGE value="test done with XML" />
     <MESSAGE value="Replaced equals() &amp; hashCode() of IRI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replaced equals() &amp; hashCode() of IRI" />
+    <MESSAGE value="Removed souts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed souts." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

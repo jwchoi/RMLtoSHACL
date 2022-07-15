@@ -1,0 +1,196 @@
+@base <http://my.example/ns#> .
+@prefix ex: <http://example.com/> .
+@prefix my: <http://my.example/ns#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+my:TriplesMap1-TriplesMap2ShapeAnd    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property my:TriplesMap1Shape-amount ;
+    sh:property my:TriplesMap1Shape-fname-q1 ;
+    sh:property my:TriplesMap1Shape-lname-q1 ;
+    sh:property my:TriplesMap1Shape-rdf-type-q1 ;
+    sh:property my:TriplesMap2Shape-city ;
+    sh:property my:TriplesMap2Shape-fname-q1 ;
+    sh:property my:TriplesMap2Shape-lname-q1 ;
+    sh:property my:TriplesMap2Shape-rdf-type-q1 .
+
+my:TriplesMap1Shape    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property my:TriplesMap1Shape-amount ;
+    sh:property my:TriplesMap1Shape-fname ;
+    sh:property my:TriplesMap1Shape-lname ;
+    sh:property my:TriplesMap1Shape-rdf-type .
+
+my:TriplesMap1Shape-amount    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#amount> ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:double ;
+    sh:minInclusive 20.0 ;
+    sh:maxInclusive 30.0 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap1Shape-fname    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#fname> ;
+    sh:nodeKind sh:Literal ;
+    sh:minLength 3 ;
+    sh:maxLength 3 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap1Shape-fname-q1    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#fname> ;
+    sh:qualifiedValueShape [
+        sh:nodeKind sh:Literal ;
+        sh:minLength 3 ;
+        sh:maxLength 3
+    ] ;
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 .
+
+my:TriplesMap1Shape-lname    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#lname> ;
+    sh:nodeKind sh:Literal ;
+    sh:minLength 5 ;
+    sh:maxLength 5 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap1Shape-lname-q1    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#lname> ;
+    sh:qualifiedValueShape [
+        sh:nodeKind sh:Literal ;
+        sh:minLength 5 ;
+        sh:maxLength 5
+    ] ;
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 .
+
+my:TriplesMap1Shape-rdf-type    
+    a sh:PropertyShape ;
+    sh:path rdf:type ;
+    sh:nodeKind sh:IRI ;
+    sh:hasValue <http://example.com/base/IOUs> ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap1Shape-rdf-type-q1    
+    a sh:PropertyShape ;
+    sh:path rdf:type ;
+    sh:qualifiedValueShape [
+        sh:nodeKind sh:IRI ;
+        sh:hasValue <http://example.com/base/IOUs>
+    ] ;
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 .
+
+my:TriplesMap1ShapeOr    
+    a sh:NodeShape ;
+    sh:or (
+        my:TriplesMap1-TriplesMap2ShapeAnd
+        my:TriplesMap1Shape
+    ) .
+
+my:TriplesMap2Shape    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property my:TriplesMap2Shape-city ;
+    sh:property my:TriplesMap2Shape-fname ;
+    sh:property my:TriplesMap2Shape-lname ;
+    sh:property my:TriplesMap2Shape-rdf-type .
+
+my:TriplesMap2Shape-city    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#city> ;
+    sh:nodeKind sh:Literal ;
+    sh:minLength 6 ;
+    sh:maxLength 6 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap2Shape-fname    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#fname> ;
+    sh:nodeKind sh:Literal ;
+    sh:minLength 3 ;
+    sh:maxLength 3 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap2Shape-fname-q1    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#fname> ;
+    sh:qualifiedValueShape [
+        sh:nodeKind sh:Literal ;
+        sh:minLength 3 ;
+        sh:maxLength 3
+    ] ;
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 .
+
+my:TriplesMap2Shape-lname    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#lname> ;
+    sh:nodeKind sh:Literal ;
+    sh:minLength 5 ;
+    sh:maxLength 5 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap2Shape-lname-q1    
+    a sh:PropertyShape ;
+    sh:path <http://example.com/base/IOUs#lname> ;
+    sh:qualifiedValueShape [
+        sh:nodeKind sh:Literal ;
+        sh:minLength 5 ;
+        sh:maxLength 5
+    ] ;
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 .
+
+my:TriplesMap2Shape-rdf-type    
+    a sh:PropertyShape ;
+    sh:path rdf:type ;
+    sh:nodeKind sh:IRI ;
+    sh:hasValue <http://example.com/base/Lives> ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap2Shape-rdf-type-q1    
+    a sh:PropertyShape ;
+    sh:path rdf:type ;
+    sh:qualifiedValueShape [
+        sh:nodeKind sh:IRI ;
+        sh:hasValue <http://example.com/base/Lives>
+    ] ;
+    sh:qualifiedMinCount 1 ;
+    sh:qualifiedMaxCount 1 .
+
+my:TriplesMap2ShapeOr    
+    a sh:NodeShape ;
+    sh:or (
+        my:TriplesMap1-TriplesMap2ShapeAnd
+        my:TriplesMap2Shape
+    ) .
+
