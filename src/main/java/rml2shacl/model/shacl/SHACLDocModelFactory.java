@@ -142,8 +142,6 @@ public class SHACLDocModelFactory {
                 PredicateMap predicateMap = predicateObjectPair.getPredicateMap();
 
                 boolean isRepeatedPredicate = isRepeatedPredicate(Set.of(triplesMap), predicateMap);
-                System.out.println("predicateMap.getIRIConstant().get() = " + predicateMap.getIRIConstant().get());
-                System.out.println("isRepeatedPredicate = " + isRepeatedPredicate);
                 IRI propertyShapeID = createPropertyShapeID(shaclBasePrefix, shaclBaseIRI, predicateMap, isRepeatedPredicate, conversionResult);
 
                 // when object map
@@ -173,8 +171,6 @@ public class SHACLDocModelFactory {
                 for (PredicateObjectMap.PredicateObjectPair predicateObjectPair : predicateObjectPairs) {
 
                     PredicateMap other = predicateObjectPair.getPredicateMap();
-                    System.out.println("predicateMap = " + predicateMap.getIRIConstant().get());
-                    System.out.println("other.getIRIConstant().get() = " + other.getIRIConstant().get());
                     if (predicateMap.getIRIConstant().equals(other.getIRIConstant())) {
                         multiplicity++;
                         if (multiplicity > 1) return true;
