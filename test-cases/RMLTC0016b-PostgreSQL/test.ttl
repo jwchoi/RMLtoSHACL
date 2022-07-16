@@ -16,48 +16,36 @@ my:TriplesMap1Shape
     sh:closed true ;
     sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
-    sh:pattern "^http://example.com/Student/(.{2,})/(.{5,})$" ;
-    sh:property my:TriplesMap1Shape-ex-id ;
-    sh:property my:TriplesMap1Shape-foaf-name ;
-    sh:property my:TriplesMap1Shape-rdf-type-q1 ;
-    sh:property my:TriplesMap1Shape-rdf-type-q2 .
+    sh:pattern "^http://example.com/Patient(.{2,})$" ;
+    sh:property my:TriplesMap1Shape-ex-height ;
+    sh:property my:TriplesMap1Shape-ex-weight ;
+    sh:property my:TriplesMap1Shape-rdf-type .
 
-my:TriplesMap1Shape-ex-id    
+my:TriplesMap1Shape-ex-height    
     a sh:PropertyShape ;
-    sh:path ex:id ;
+    sh:path ex:height ;
     sh:nodeKind sh:Literal ;
-    sh:datatype xsd:integer ;
-    sh:minInclusive 10 ;
-    sh:maxInclusive 10 ;
+    sh:datatype xsd:double ;
+    sh:minInclusive 1.65 ;
+    sh:maxInclusive 1.76 ;
     sh:minCount 1 ;
     sh:maxCount 1 .
 
-my:TriplesMap1Shape-foaf-name    
+my:TriplesMap1Shape-ex-weight    
     a sh:PropertyShape ;
-    sh:path foaf:name ;
+    sh:path ex:weight ;
     sh:nodeKind sh:Literal ;
-    sh:minLength 5 ;
-    sh:maxLength 5 ;
+    sh:datatype xsd:double ;
+    sh:minInclusive 70.22 ;
+    sh:maxInclusive 90.31 ;
     sh:minCount 1 ;
     sh:maxCount 1 .
 
-my:TriplesMap1Shape-rdf-type-q1    
+my:TriplesMap1Shape-rdf-type    
     a sh:PropertyShape ;
     sh:path rdf:type ;
-    sh:qualifiedValueShape [
-        sh:nodeKind sh:IRI ;
-        sh:hasValue foaf:Person
-    ] ;
-    sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 .
-
-my:TriplesMap1Shape-rdf-type-q2    
-    a sh:PropertyShape ;
-    sh:path rdf:type ;
-    sh:qualifiedValueShape [
-        sh:nodeKind sh:IRI ;
-        sh:hasValue ex:Student
-    ] ;
-    sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 .
+    sh:nodeKind sh:IRI ;
+    sh:hasValue foaf:Person ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
 

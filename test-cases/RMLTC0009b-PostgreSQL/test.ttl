@@ -1,5 +1,6 @@
 @base <http://my.example/ns#> .
 @prefix ex: <http://example.com/> .
+@prefix activity: <http://example.com/activity/> .
 @prefix my: <http://my.example/ns#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
@@ -16,48 +17,41 @@ my:TriplesMap1Shape
     sh:closed true ;
     sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
-    sh:pattern "^http://example.com/Student/(.{2,})/(.{5,})$" ;
-    sh:property my:TriplesMap1Shape-ex-id ;
+    sh:class <http://example.com/ontology/Student> ;
+    sh:pattern "^http://example.com/resource/student_(.{2,})$" ;
     sh:property my:TriplesMap1Shape-foaf-name ;
-    sh:property my:TriplesMap1Shape-rdf-type-q1 ;
-    sh:property my:TriplesMap1Shape-rdf-type-q2 .
-
-my:TriplesMap1Shape-ex-id    
-    a sh:PropertyShape ;
-    sh:path ex:id ;
-    sh:nodeKind sh:Literal ;
-    sh:datatype xsd:integer ;
-    sh:minInclusive 10 ;
-    sh:maxInclusive 10 ;
-    sh:minCount 1 ;
-    sh:maxCount 1 .
+    sh:property my:TriplesMap1Shape-practises .
 
 my:TriplesMap1Shape-foaf-name    
     a sh:PropertyShape ;
     sh:path foaf:name ;
     sh:nodeKind sh:Literal ;
-    sh:minLength 5 ;
-    sh:maxLength 5 ;
+    sh:minLength 10 ;
+    sh:maxLength 14 ;
     sh:minCount 1 ;
     sh:maxCount 1 .
 
-my:TriplesMap1Shape-rdf-type-q1    
+my:TriplesMap1Shape-practises    
     a sh:PropertyShape ;
-    sh:path rdf:type ;
-    sh:qualifiedValueShape [
-        sh:nodeKind sh:IRI ;
-        sh:hasValue foaf:Person
-    ] ;
-    sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 .
+    sh:path <http://example.com/ontology/practises> ;
+    sh:node my:TriplesMap2Shape ;
+    sh:maxCount 1 .
 
-my:TriplesMap1Shape-rdf-type-q2    
+my:TriplesMap2Shape    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:nodeKind sh:IRI ;
+    sh:class <http://example.com/ontology/Sport> ;
+    sh:pattern "^http://example.com/resource/sport_(.{3,})$" ;
+    sh:property my:TriplesMap2Shape-rdfs-label .
+
+my:TriplesMap2Shape-rdfs-label    
     a sh:PropertyShape ;
-    sh:path rdf:type ;
-    sh:qualifiedValueShape [
-        sh:nodeKind sh:IRI ;
-        sh:hasValue ex:Student
-    ] ;
-    sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 .
+    sh:path rdfs:label ;
+    sh:nodeKind sh:Literal ;
+    sh:minLength 6 ;
+    sh:maxLength 6 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
 

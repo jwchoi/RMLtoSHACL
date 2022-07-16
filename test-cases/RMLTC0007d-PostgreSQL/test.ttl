@@ -46,7 +46,7 @@ my:TriplesMap1Shape-rdf-type-q1
     sh:path rdf:type ;
     sh:qualifiedValueShape [
         sh:nodeKind sh:IRI ;
-        sh:hasValue foaf:Person
+        sh:hasValue ex:Student
     ] ;
     sh:qualifiedMinCount 1 ;
     sh:qualifiedMaxCount 1 .
@@ -56,7 +56,7 @@ my:TriplesMap1Shape-rdf-type-q2
     sh:path rdf:type ;
     sh:qualifiedValueShape [
         sh:nodeKind sh:IRI ;
-        sh:hasValue ex:Student
+        sh:hasValue foaf:Person
     ] ;
     sh:qualifiedMinCount 1 ;
     sh:qualifiedMaxCount 1 .

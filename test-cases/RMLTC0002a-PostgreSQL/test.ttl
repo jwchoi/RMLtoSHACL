@@ -16,11 +16,10 @@ my:TriplesMap1Shape
     sh:closed true ;
     sh:ignoredProperties (rdf:type) ;
     sh:nodeKind sh:IRI ;
-    sh:pattern "^http://example.com/Student/(.{2,})/(.{5,})$" ;
+    sh:class foaf:Person ;
+    sh:pattern "^http://example.com/(.{2,})/(.{5,})$" ;
     sh:property my:TriplesMap1Shape-ex-id ;
-    sh:property my:TriplesMap1Shape-foaf-name ;
-    sh:property my:TriplesMap1Shape-rdf-type-q1 ;
-    sh:property my:TriplesMap1Shape-rdf-type-q2 .
+    sh:property my:TriplesMap1Shape-foaf-name .
 
 my:TriplesMap1Shape-ex-id    
     a sh:PropertyShape ;
@@ -40,24 +39,4 @@ my:TriplesMap1Shape-foaf-name
     sh:maxLength 5 ;
     sh:minCount 1 ;
     sh:maxCount 1 .
-
-my:TriplesMap1Shape-rdf-type-q1    
-    a sh:PropertyShape ;
-    sh:path rdf:type ;
-    sh:qualifiedValueShape [
-        sh:nodeKind sh:IRI ;
-        sh:hasValue foaf:Person
-    ] ;
-    sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 .
-
-my:TriplesMap1Shape-rdf-type-q2    
-    a sh:PropertyShape ;
-    sh:path rdf:type ;
-    sh:qualifiedValueShape [
-        sh:nodeKind sh:IRI ;
-        sh:hasValue ex:Student
-    ] ;
-    sh:qualifiedMinCount 1 ;
-    sh:qualifiedMaxCount 1 .
 
