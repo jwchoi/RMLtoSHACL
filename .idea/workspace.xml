@@ -5,57 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002d-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002f-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002g-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002h-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002i-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002j-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0004a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007c-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007d-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007e-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007f-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007g-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008c-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009c-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009d-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0013a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0014d-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0015a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016c-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016d-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016e-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0018a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019b-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020a-SQLServer/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020b-PostgreSQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020b-SQLServer/test.ttl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Done with supporting XML tested">
-      <created>1644566002162</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1644566002163</updated>
     </task>
     <task id="LOCAL-00054" summary="Added JsonPath Option">
       <created>1644570031643</created>
@@ -519,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657953414018</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="Done test with SQLServer.">
+      <created>1658022631786</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1658022631787</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -527,7 +483,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Ready to use 'inverse'" />
     <MESSAGE value="Ready to test" />
     <MESSAGE value="Modified writeShacl()" />
     <MESSAGE value="Fixed ShapeAnd &amp; ShapeOr for 4a-CSV" />
@@ -552,7 +507,8 @@
     <MESSAGE value="Modified equals() of IRI." />
     <MESSAGE value="Done test with MySQL." />
     <MESSAGE value="Done test with PostgreSQL." />
-    <option name="LAST_COMMIT_MESSAGE" value="Done test with PostgreSQL." />
+    <MESSAGE value="Done test with SQLServer." />
+    <option name="LAST_COMMIT_MESSAGE" value="Done test with SQLServer." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

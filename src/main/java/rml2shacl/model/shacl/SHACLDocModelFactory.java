@@ -29,7 +29,7 @@ public class SHACLDocModelFactory {
         for (TriplesMap triplesMap : triplesMaps)
             convertPredicateObjectMaps2PropertyShapes(shaclBasePrefix, shaclBaseIRI, triplesMap, tmcrMap.get(triplesMap)); // predicate-object map -> property shapes
 
-        Set<Set<TriplesMap>> triplesMapGroup = groupTriplesMapWithSameSubject(tmcrMap);
+        Set<Set<TriplesMap>> triplesMapGroup = groupBySameSubject(tmcrMap);
         assignReferenceId(shaclBasePrefix, shaclBaseIRI, triplesMapGroup, tmcrMap);
 
         convertPredicateRefObjectMaps2PropertyShapes(shaclBasePrefix, shaclBaseIRI, tmcrMap); // predicate-referencing-object map -> property shapes
@@ -64,7 +64,7 @@ public class SHACLDocModelFactory {
         conversionResult.nodeShape = sm2ns;
     }
 
-    private static Set<Set<TriplesMap>> groupTriplesMapWithSameSubject(Map<TriplesMap, ConversionResult> tcMap) {
+    private static Set<Set<TriplesMap>> groupBySameSubject(Map<TriplesMap, ConversionResult> tcMap) {
         Map<NodeShape, TriplesMap> ntMap = new HashMap<>();
 
         Set<TriplesMap> triplesMaps = tcMap.keySet();
@@ -74,20 +74,12 @@ public class SHACLDocModelFactory {
 
         Set<NodeShape> nodeShapes = ntMap.keySet();
         
-        Set<Set<NodeShape>> nsGroup = new HashSet<>();
-        // build group
-        for (NodeShape ns1 : nodeShapes) {
-            Set<NodeShape> nsSubgroup = new HashSet<>();
-            for (NodeShape ns2 : nodeShapes) {
-                if (ns1.isEquivalent(ns2)) nsSubgroup.add(ns2);
-            }
-            nsGroup.add(nsSubgroup);
-        }
+        Set<Set<Shape>> nsGroup = groupShapesByEquivalency(nodeShapes);
 
         Set<Set<TriplesMap>> tmGroup = new HashSet<>();
-        for (Set<NodeShape> nsSubgroup : nsGroup) {
+        for (Set<Shape> nsSubgroup : nsGroup) {
             Set<TriplesMap> tmSubgroup = new HashSet<>();
-            for (NodeShape ns : nsSubgroup) {
+            for (Shape ns : nsSubgroup) {
                 tmSubgroup.add(ntMap.get(ns));
             }
             tmGroup.add(tmSubgroup);
@@ -333,11 +325,13 @@ public class SHACLDocModelFactory {
     private static Set<PropertyShape> getPropertyShapesForShapeAnd(String shaclBasePrefix, URI shaclBaseIRI, Set<TriplesMap> triplesMaps, Map<TriplesMap, ConversionResult> tmcrMap) {
         Set<PropertyShape> propertyShapes = new TreeSet<>();
 
+        Set<PropertyShape> repeatedPropertyShapes = new TreeSet<>();
+
         for (TriplesMap triplesMap: triplesMaps) {
             ConversionResult conversionResult = tmcrMap.get(triplesMap);
             for (PropertyShape existingPropertyShape: conversionResult.propertyShapes) {
                 if (existingPropertyShape.isRepeatedProperty()) {
-                    propertyShapes.add(existingPropertyShape);
+                    repeatedPropertyShapes.add(existingPropertyShape);
                     continue;
                 }
 
@@ -351,7 +345,7 @@ public class SHACLDocModelFactory {
                         newPropertyShape.setId(propertyShapeID);
                         newPropertyShape.setIsRepeatedProperty(true);
 
-                        propertyShapes.add(newPropertyShape);
+                        repeatedPropertyShapes.add(newPropertyShape);
                     } catch (CloneNotSupportedException e) {
                         System.err.println("Failed clone of PropertyShape");
                     }
@@ -360,7 +354,33 @@ public class SHACLDocModelFactory {
             }
         }
 
+        Set<Set<Shape>> group = groupShapesByEquivalency(repeatedPropertyShapes);
+
+        for (Set<Shape> subgroup: group) {
+            if (subgroup.size() == 1) {
+                subgroup.stream().map(PropertyShape.class::cast).forEach(propertyShapes::add);
+                continue;
+            }
+
+            // when subgroup.size() > 1, a new property shape representing the subgroup is created.
+            subgroup.stream().map(PropertyShape.class::cast).forEach(propertyShapes::add); // temporarily.
+        }
+
         return propertyShapes;
+    }
+
+    private static Set<Set<Shape>> groupShapesByEquivalency(Set<? extends Shape> shapes) {
+        Set<Set<Shape>> group = new HashSet<>();
+        // build group
+        for (Shape s1 : shapes) {
+            Set<Shape> subgroup = new HashSet<>();
+            for (Shape s2 : shapes) {
+                if (s1.isEquivalent(s2)) subgroup.add(s2);
+            }
+            group.add(subgroup);
+        }
+
+        return group;
     }
 
     private static class ConversionResult {

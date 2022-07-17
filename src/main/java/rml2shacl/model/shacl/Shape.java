@@ -11,10 +11,32 @@ import java.util.Optional;
 public abstract class Shape implements Comparable<Shape> {
     private Optional<IRI> id;
 
-    Shape(IRI id) { this.id = Optional.ofNullable(id); }
+    private Optional<NodeKinds> nodeKind; // sh:nodeKind
+
+    private Optional<String> pattern; // sh:pattern
+
+    Shape(IRI id) {
+        this.id = Optional.ofNullable(id);
+
+        nodeKind = Optional.empty();
+        pattern = Optional.empty();
+    }
 
     IRI getId() { return id.orElse(null); }
     void setId(IRI id) { this.id = Optional.ofNullable(id); }
+
+    protected Optional<NodeKinds> getNodeKind() { return nodeKind; }
+    protected void setNodeKind(Optional<NodeKinds> nodeKind) { this.nodeKind = nodeKind; }
+
+    protected Optional<String> getPattern() { return pattern; }
+    protected void setPattern(Optional<String> pattern) { this.pattern = pattern; }
+
+    protected boolean isEquivalentPattern(Optional<String> pattern) {
+        String normalizedThisPattern = this.pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
+        String normalizedOtherPattern = pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
+
+        return normalizedThisPattern.equals(normalizedOtherPattern);
+    }
 
     public String getSerializedShape() {  return id.isPresent() ? id.get().getPrefixedName() : Symbols.EMPTY; }
 
@@ -39,6 +61,8 @@ public abstract class Shape implements Comparable<Shape> {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+    abstract boolean isEquivalent(Shape other);
 
     protected String getPO(String p, String o) { return p + Symbols.SPACE + o; }
 

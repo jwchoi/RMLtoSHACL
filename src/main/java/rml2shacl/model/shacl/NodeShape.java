@@ -16,10 +16,8 @@ public class NodeShape extends Shape {
     private Type type;
 
     //->MAPPED & MULTIPLE_MAPPED
-    private Optional<NodeKinds> nodeKind; // sh:nodeKind
     private Set<IRI> classes; // sh:class
     private Optional<IRI> hasValue; //sh:hasValue
-    private Optional<String> pattern; // sh:pattern
     private Set<IRI> propertyShapes;
     //<-MAPPED & MULTIPLE_MAPPED
 
@@ -30,10 +28,8 @@ public class NodeShape extends Shape {
     private NodeShape(IRI id) {
         super(id);
 
-        nodeKind = Optional.empty();
         classes = new TreeSet<>();
         hasValue = Optional.empty();
-        pattern = Optional.empty();
         propertyShapes = new TreeSet<>();
 
         nodeShapeIRIs = new TreeSet<>();
@@ -60,35 +56,35 @@ public class NodeShape extends Shape {
         this.nodeShapeIRIs.addAll(nodeShapeIRIs);
     }
 
-    boolean isEquivalent(NodeShape other) {
+    @Override
+    boolean isEquivalent(Shape other) {
+        if (!(other instanceof NodeShape)) return false;
+
+        NodeShape that = (NodeShape) other;
+
         // nodeKind
-        if (!nodeKind.equals(other.nodeKind)) return false;
+        if (!getNodeKind().equals(that.getNodeKind())) return false;
 
         // pattern
-        if (pattern.isPresent() && other.pattern.isPresent()) {
-            if (!isEquivalentPattern(other.pattern)) return false;
+        Optional<String> thisPattern = getPattern();
+        Optional<String> thatPattern = that.getPattern();
+        if (thisPattern.isPresent() && thatPattern.isPresent()) {
+            if (!isEquivalentPattern(thatPattern)) return false;
         }
 
         // hasValue
-        if (!hasValue.equals(other.hasValue)) return false;
+        if (!hasValue.equals(that.hasValue)) return false;
 
         // hasValue ⊂ pattern
-        if (hasValue.isPresent() && other.pattern.isPresent()) {
-            if (!hasValue.get().toString().matches(other.pattern.get())) return false;
+        if (hasValue.isPresent() && thatPattern.isPresent()) {
+            if (!hasValue.get().toString().matches(thatPattern.get())) return false;
         }
 
-        if (other.hasValue.isPresent() && pattern.isPresent()) {
-            if (!other.hasValue.get().toString().matches(pattern.get())) return false;
+        if (that.hasValue.isPresent() && thisPattern.isPresent()) {
+            if (!that.hasValue.get().toString().matches(thisPattern.get())) return false;
         }
 
         return true;
-    }
-
-    private boolean isEquivalentPattern(Optional<String> pattern) {
-        String normalizedThisPattern = this.pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
-        String normalizedOtherPattern = pattern.get().replaceAll("\\(\\.\\{\\d+\\,\\}\\)", "(.*)");
-
-        return normalizedThisPattern.equals(normalizedOtherPattern);
     }
 
     private void convert(SubjectMap subjectMap) {
@@ -102,7 +98,7 @@ public class NodeShape extends Shape {
         setNodeKind(Arrays.stream(subjectMaps).findAny().get()); // all nodeKinds are the same.
         Arrays.stream(subjectMaps).forEach(this::setClasses); // classes are all added.
         setPattern(subjectMaps);
-        if (pattern.isEmpty() ) setHasValue(Arrays.stream(subjectMaps).findAny().get()); // if exists, all IRI constants are the same.
+        if (getPattern().isEmpty()) setHasValue(Arrays.stream(subjectMaps).findAny().get()); // if exists, all IRI constants are the same.
     }
 
     private void setNodeKind(SubjectMap subjectMap) {
@@ -110,12 +106,12 @@ public class NodeShape extends Shape {
 
         if (termType.isPresent()) {
             if (termType.get().equals(TermMap.TermTypes.BLANKNODE)) {
-                nodeKind = Optional.of(NodeKinds.BlankNode);
+                setNodeKind(Optional.of(NodeKinds.BlankNode));
                 return;
             }
         }
 
-        nodeKind = Optional.of(NodeKinds.IRI);
+        setNodeKind(Optional.of(NodeKinds.IRI));
     }
 
     private void setClasses(SubjectMap subjectMap) { classes.addAll(subjectMap.getClasses()); }
@@ -124,7 +120,7 @@ public class NodeShape extends Shape {
 
     private void setPattern(SubjectMap... subjectMaps) {
         // only if rr:termType is rr:IRI
-        if (!nodeKind.get().equals(NodeKinds.IRI)) return;
+        if (!getNodeKind().get().equals(NodeKinds.IRI)) return;
 
         // filter non-null templates
         Set<Template> templates = Arrays.stream(subjectMaps)
@@ -158,12 +154,12 @@ public class NodeShape extends Shape {
             format = format.replace("{" + columnName + "}", "(." + quantifier + ")");
         }
 
-        pattern = Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
+        setPattern(Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK));
     }
 
     private void setPattern(SubjectMap subjectMap) {
         // only if rr:termType is rr:IRI
-        if (!nodeKind.get().equals(NodeKinds.IRI)) return;
+        if (!getNodeKind().get().equals(NodeKinds.IRI)) return;
 
         Optional<Template> template = subjectMap.getTemplate();
         if (template.isPresent()) {
@@ -177,7 +173,7 @@ public class NodeShape extends Shape {
                 format = format.replace("{" + columnName + "}", "(." + quantifier + ")");
             }
 
-            pattern = Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
+            setPattern(Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK));
         }
     }
 
@@ -196,6 +192,7 @@ public class NodeShape extends Shape {
         pos.add(getPO("sh:ignoredProperties", o));
 
         // sh:nodeKind
+        Optional<NodeKinds> nodeKind = getNodeKind();
         if (nodeKind.isPresent()) {
             o = nodeKind.get().equals(NodeKinds.BlankNode) ? "sh:BlankNode" : "sh:IRI";
 
@@ -218,6 +215,7 @@ public class NodeShape extends Shape {
 
         // sh:pattern
         // only if rr:termType is rr:IRI
+        Optional<String> pattern = getPattern();
         if (nodeKind.get().equals(NodeKinds.IRI) && pattern.isPresent()) {
             o = pattern.get();
 

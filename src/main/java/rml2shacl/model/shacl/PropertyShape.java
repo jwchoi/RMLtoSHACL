@@ -15,15 +15,12 @@ public class PropertyShape extends Shape implements Cloneable {
     private IRI path;
 
     //-> ObjectMap
-    private Optional<NodeKinds> nodeKind; // sh:nodeKind
-
     // sh:hasValue -> either literalConstant or iriConstant
     private Optional<String> literalValue; // sh:hasValue
     private Optional<IRI> iriValue; // sh:hasValue
 
     private Optional<String> languageTag; // sh:languageIn
     private Optional<IRI> datatype; // sh:datatype
-    private Optional<String> pattern; // sh:pattern
     private Optional<String> minInclusive; // sh:minInclusive
     private Optional<String> maxInclusive; // sh:maxInclusive
     private Optional<Integer> minLength; // sh:minLength
@@ -44,9 +41,7 @@ public class PropertyShape extends Shape implements Cloneable {
     private PropertyShape(IRI id) {
         super(id);
 
-        nodeKind = Optional.empty();
         languageTag = Optional.empty();
-        pattern = Optional.empty();
         minInclusive = Optional.empty();
         maxInclusive = Optional.empty();
         minLength = Optional.empty();
@@ -128,9 +123,9 @@ public class PropertyShape extends Shape implements Cloneable {
 
         if (termType.isPresent()) {
             switch (termType.get()) {
-                case IRI -> nodeKind = Optional.of(NodeKinds.IRI);
-                case LITERAL -> nodeKind = Optional.of(NodeKinds.Literal);
-                case BLANKNODE -> nodeKind = Optional.of(NodeKinds.BlankNode);
+                case IRI -> setNodeKind(Optional.of(NodeKinds.IRI));
+                case LITERAL -> setNodeKind(Optional.of(NodeKinds.Literal));
+                case BLANKNODE -> setNodeKind(Optional.of(NodeKinds.BlankNode));
             }
         }
     }
@@ -152,7 +147,7 @@ public class PropertyShape extends Shape implements Cloneable {
         // https://www.w3.org/TR/r2rml/#natural-mapping
         Optional<Column> column = objectMap.getColumn();
         if (column.isPresent()) {
-            if (nodeKind.get().equals(NodeKinds.Literal) && literalValue.isEmpty() && languageTag.isEmpty() && datatype.isEmpty()) {
+            if (getNodeKind().get().equals(NodeKinds.Literal) && literalValue.isEmpty() && languageTag.isEmpty() && datatype.isEmpty()) {
                 datatype = column.get().getRdfDatatype();
             }
         }
@@ -160,7 +155,7 @@ public class PropertyShape extends Shape implements Cloneable {
         // When Database in RML
         Optional<Column> reference = objectMap.getReference();
         if (reference.isPresent() && reference.get().getDataSourceKind().isPresent() && reference.get().getDataSourceKind().get().equals(DataSource.DataSourceKinds.DATABASE)) {
-            if (nodeKind.get().equals(NodeKinds.Literal) && literalValue.isEmpty() && languageTag.isEmpty() && datatype.isEmpty()) {
+            if (getNodeKind().get().equals(NodeKinds.Literal) && literalValue.isEmpty() && languageTag.isEmpty() && datatype.isEmpty()) {
                 datatype = reference.get().getRdfDatatype();
             }
         }
@@ -186,7 +181,7 @@ public class PropertyShape extends Shape implements Cloneable {
             format = format.replace("\\{", "{");
             format = format.replace("\\}", "}");
 
-            pattern = Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK);
+            setPattern(Optional.of(Symbols.DOUBLE_QUOTATION_MARK + Symbols.CARET + format + Symbols.DOLLAR + Symbols.DOUBLE_QUOTATION_MARK));
         }
     }
 
@@ -211,6 +206,7 @@ public class PropertyShape extends Shape implements Cloneable {
 
     private void setStringLength(ObjectMap objectMap) {
         // sh:minLength and sh:maxLength are applied to  any literals and IRIs, but not to blank node in SHACL
+        Optional<NodeKinds> nodeKind = getNodeKind();
         if (nodeKind.isPresent() && nodeKind.get().equals(NodeKinds.BlankNode)) return;
 
         Optional<Column> optionalColumn = objectMap.getColumn();
@@ -274,6 +270,7 @@ public class PropertyShape extends Shape implements Cloneable {
         String o; // to be used as objects of different RDF triples
 
         // sh:nodeKind
+        Optional<NodeKinds> nodeKind = getNodeKind();
         if (nodeKind.isPresent()) {
             o = switch (nodeKind.get()) {
                 case BlankNode -> "sh:BlankNode";
@@ -340,6 +337,7 @@ public class PropertyShape extends Shape implements Cloneable {
         }
 
         // sh:pattern
+        Optional<String> pattern = getPattern();
         if (pattern.isPresent()) {
             o = pattern.get();
 
@@ -427,5 +425,33 @@ public class PropertyShape extends Shape implements Cloneable {
     @Override
     protected PropertyShape clone() throws CloneNotSupportedException {
         return (PropertyShape) super.clone();
+    }
+
+    @Override
+    boolean isEquivalent(Shape other) {
+        if(!(other instanceof PropertyShape)) return false;
+
+        PropertyShape that = (PropertyShape) other;
+
+        boolean isEquivalent = Objects.equals(path, that.path)
+                && Objects.equals(getNodeKind(), that.getNodeKind())
+                && Objects.equals(literalValue, that.literalValue)
+                && Objects.equals(iriValue, that.iriValue)
+                && Objects.equals(languageTag, that.languageTag)
+                && Objects.equals(datatype, that.datatype)
+                && Objects.equals(minInclusive, that.minInclusive)
+                && Objects.equals(maxInclusive, that.maxInclusive)
+                && Objects.equals(minLength, that.minLength)
+                && Objects.equals(maxLength, that.maxLength)
+                && Objects.equals(node, that.node);
+
+        if (!isEquivalent) return false;
+
+        Optional<String> thisPattern = getPattern();
+        Optional<String> thatPattern = that.getPattern();
+        if (thisPattern.isEmpty() && thatPattern.isEmpty()) return true;
+        if (thisPattern.isPresent() && thatPattern.isPresent()) return isEquivalentPattern(thatPattern);
+
+        return false;
     }
 }
