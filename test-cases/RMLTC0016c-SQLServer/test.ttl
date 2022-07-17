@@ -1,0 +1,47 @@
+@base <http://my.example/ns#> .
+@prefix ex: <http://example.com/> .
+@prefix my: <http://my.example/ns#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+my:TriplesMap1Shape    
+    a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^http://example.com/Patient(.{2,})$" ;
+    sh:property my:TriplesMap1Shape-ex-birthdate ;
+    sh:property my:TriplesMap1Shape-ex-entrancedate ;
+    sh:property my:TriplesMap1Shape-rdf-type .
+
+my:TriplesMap1Shape-ex-birthdate    
+    a sh:PropertyShape ;
+    sh:path ex:birthdate ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:date ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap1Shape-ex-entrancedate    
+    a sh:PropertyShape ;
+    sh:path ex:entrancedate ;
+    sh:nodeKind sh:Literal ;
+    sh:datatype xsd:dateTime ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+
+my:TriplesMap1Shape-rdf-type    
+    a sh:PropertyShape ;
+    sh:path rdf:type ;
+    sh:nodeKind sh:IRI ;
+    sh:hasValue foaf:Person ;
+    sh:minCount 1 ;
+    sh:maxCount 1 .
+

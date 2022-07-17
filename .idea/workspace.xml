@@ -5,63 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002d-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-MySQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002f-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002g-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002h-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002i-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002j-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0004a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007c-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007d-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007e-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007f-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007g-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008c-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009c-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009d-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010c-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0011a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0011b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0012a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0012b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0012e-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0013a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0014d-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0015a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016b-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016c-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016d-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016e-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0018a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019a-PostgreSQL/test.ttl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019b-PostgreSQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0000-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0001b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002c-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002d-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002e-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002f-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002g-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002h-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002i-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0002j-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0003c-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0004a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0005b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0006a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007c-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007d-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007e-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007f-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0007g-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0008c-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009c-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0009d-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0010a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0013a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0014d-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0015a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016c-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016d-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0016e-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0018a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0019b-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020a-PostgreSQL/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020a-SQLServer/test.ttl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020b-PostgreSQL/test.ttl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0007d-MySQL/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0007d-MySQL/test.ttl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,13 +175,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641711016745</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Done with supporting XML once">
-      <created>1644401117894</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1644401117894</updated>
     </task>
     <task id="LOCAL-00053" summary="Done with supporting XML tested">
       <created>1644566002162</created>
@@ -525,7 +512,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657883821905</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Done test with PostgreSQL.">
+      <created>1657953414018</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1657953414018</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -533,7 +527,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Finished building NodeShape" />
     <MESSAGE value="Ready to use 'inverse'" />
     <MESSAGE value="Ready to test" />
     <MESSAGE value="Modified writeShacl()" />
@@ -558,7 +551,8 @@
     <MESSAGE value="Removed souts." />
     <MESSAGE value="Modified equals() of IRI." />
     <MESSAGE value="Done test with MySQL." />
-    <option name="LAST_COMMIT_MESSAGE" value="Done test with MySQL." />
+    <MESSAGE value="Done test with PostgreSQL." />
+    <option name="LAST_COMMIT_MESSAGE" value="Done test with PostgreSQL." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
