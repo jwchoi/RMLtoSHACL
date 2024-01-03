@@ -5,13 +5,133 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941705b4-9427-4f94-8656-06e4c8b2928b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test-cases/RMLTC0020b-SQLServer/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/ColumnMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBBridge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBBridgeFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBColumn.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBEntityTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBMSTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBRefConstraint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBSchema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/DBSchemaFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MariaDBBridge$DateTimeTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MariaDBBridge$DateTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MariaDBBridge$IntegerTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MariaDBBridge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MariaDBResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MySQLBridge$DateTimeTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MySQLBridge$DateTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MySQLBridge$IntegerTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MySQLBridge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/MySQLResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/RefConstraintMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/SQLResultSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/SQLResultSetTableModel$CachedRecord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/SQLResultSetTableModel$Record.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/SQLResultSetTableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/SQLSelectField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/TableMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/janus/database/UniqueConstraintMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/Shaper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/PrefixMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/SqlXsdMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/Symbols.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/XSDs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/Utils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/BlankNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/DirectMappingModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/DirectMappingModelFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/IndividualParsingException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/Literal$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/Literal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/LiteralProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/ReferenceProperty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/RowNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/dm/TableIRI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/JoinCondition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/LogicalTable$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/LogicalTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/ObjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/PredicateMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/PredicateObjectMap$PredicateObjectPair.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/PredicateObjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/R2RMLModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/R2RMLModelFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/RefObjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/SubjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/Template.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/TermMap$TermTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/TermMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/r2rml/TriplesMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/JoinCondition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/LogicalTable$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/LogicalTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/ObjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/PredicateMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/PredicateObjectMap$PredicateObjectPair.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/PredicateObjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/RMLModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/RMLModelFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/RefObjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/SubjectMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/Template.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/TermMap$TermTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/TermMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/rml/TriplesMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/NodeKinds.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/NodeShape$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/NodeShape$MappingTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/NodeShape.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/PropertyShape$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/PropertyShape$MappingTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/PropertyShape.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/ShaclDocModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/ShaclDocModelFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shacl/Shape.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/NodeConstraint$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/NodeConstraint$XSFacets.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/NodeConstraint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/NodeKinds.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/ShExSchema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/ShExSchemaFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/Shape.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/TripleConstraint$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/TripleConstraint$MappedTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/model/shex/TripleConstraint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/r2rml/R2RMLParser$Lang.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/r2rml/R2RMLParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rdf/DirectMappingRDFMapper$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rdf/DirectMappingRDFMapper$NaturalJoinQuery$SQLSelectColumn.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rdf/DirectMappingRDFMapper$NaturalJoinQuery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rdf/DirectMappingRDFMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rdf/R2RMLRDFMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rdf/RDFMapper$Extension.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rdf/RDFMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rml/RMLParser$Lang.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/rml/RMLParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/shacl/DirectMappingShaclMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/shacl/R2RMLShaclMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/shacl/ShaclMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/shex/DirectMappingShExMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/shex/R2RMLShExMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/shex/RMLShExMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/shaper/mapping/shex/ShExMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rml2shacl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rml2shacl.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/NodeShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/PropertyShape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/SHACLDocModelFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rml2shacl/model/shacl/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001a-MySQL/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-MySQL/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001a-PostgreSQL/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-PostgreSQL/test.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-cases/RMLTC0001a-SQLServer/test.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/test-cases/RMLTC0001a-SQLServer/test.ttl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +148,7 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="RML2SHACL" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -69,6 +184,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="23Ry59akIka8NNy45uCjXlsrJsR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -80,14 +198,19 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Build RMLtoSHACL.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.RMLtoSHACL [:Rml2Shacl.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/jwchoi/Desktop/RML2SHACL/test-cases/RMLTC0002g-JSON&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -107,6 +230,7 @@
     <configuration name="Rml2Shacl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rml2shacl.Rml2Shacl" />
       <module name="RML2SHACL.main" />
+      <option name="VM_PARAMETERS" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="rml2shacl.*" />
@@ -122,6 +246,13 @@
         <item itemvalue="Application.Rml2Shacl" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

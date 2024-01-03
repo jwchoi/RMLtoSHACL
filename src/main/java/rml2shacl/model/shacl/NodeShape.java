@@ -75,7 +75,7 @@ public class NodeShape extends Shape {
         // hasValue
         if (!hasValue.equals(that.hasValue)) return false;
 
-        // hasValue ⊂ pattern
+        // hasValue is matched with pattern
         if (hasValue.isPresent() && thatPattern.isPresent()) {
             if (!hasValue.get().toString().matches(thatPattern.get())) return false;
         }
